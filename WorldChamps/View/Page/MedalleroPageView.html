@@ -1,0 +1,55 @@
+<h1>Medallero Español</h1>
+
+<table class="table table-hover" style="display:block;max-width:100%;overflow-x:auto;">
+    <thead>
+        <tr>
+            <th class="col-xs-1 text-right">pos</th>
+            <th class="col-xs-1 text-center"> Foto</th>
+            <th class="col-xs-6">Competidor</th>
+            <th class="col-xs-1 text-right">Oros</th>
+            <th class="col-xs-1 text-right">Platas</th>
+            <th class="col-xs-1 text-right">Bronces</th>
+            <th class="col-xs-1 text-right">TOTAL</th>
+        </tr>
+    </thead>
+    <tbody>
+    {{FOR(medals)}}
+        <tr{{IF(ranking=1)}} style="font-size:22px;color:rgb(255,0,0);"{{ENDIF()}}{{IF(ranking=2)}} style="font-size:20px;color:rgb(170,0,0);"{{ENDIF()}}{{IF(ranking=3)}} style="font-size:18px;color:rgb(85,0,0);"{{ENDIF()}}><!-- style="font-size:'.(24-$count*2).'px;color:rgb('.(round((255/3)*(4-$count))).',0,0);" -->
+            <td class='text-right vert-align'>{{ranking}}</td>
+            <td class="vert-align"><center><div id="thumb_{{wcaID}}" class="wca-thumbnail"></div></center></td>
+            <td class="vert-align">
+                <a class="vert-align" href="https://www.worldcubeassociation.org/results/p.php?i={{wcaID}}" target=_blank>
+                  {{name}}
+                </a>
+            </td>
+            <td class="text-right vert-align">{{gold}}</td>
+            <td class="text-right vert-align">{{silver}}</td>
+            <td class="text-right vert-align">{{bronze}}</td>
+            <td class='text-right vert-align'>{{total}}</td>
+        </tr>
+    {{ENDFOR()}}
+    </tbody>
+</table>
+
+<script>
+    $(document).ready(function() {
+        $('table .wca-thumbnail').each(function() {
+            if (this.id.length > 6) {
+                var wcaId = this.id.substring(6);
+                $.ajax('https://www.worldcubeassociation.org/api/v0/users/'+wcaId)
+                        .done(function(wcaObj) {
+                            if (wcaObj && wcaObj.user && wcaObj.user.avatar && !wcaObj.user.avatar.is_default) {
+                                //$('#thumb_'+wcaObj.user.wca_id).attr('src',wcaObj.user.avatar.thumb_url)
+                                $('#thumb_'+wcaObj.user.wca_id).css('background-image', 'url("' + wcaObj.user.avatar.thumb_url + '")')
+                                        .popover({
+                                            html: true,
+                                            trigger: 'hover',
+                                            title: wcaObj.user.name,
+                                            content: '<img class="img-responsive" src="'+wcaObj.user.avatar.url+'">'
+                                        });
+                            }
+                        });
+            }
+        });
+    });
+</script>

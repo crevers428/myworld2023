@@ -1,0 +1,187 @@
+<div class="row summary">
+    {{IF(banner_exists)}}
+    <div class="title-img" style="background: #000022 url('http://cubecomps.com/uploads/ban_{{cubecompsId}}.gif') no-repeat top right"></div>
+    {{ELSE()}}
+    <div class="title-txt"><h1><b>{{nombre}}</b></h1></div>
+    {{ENDIF()}}
+    <div class="col-xs-12 col-sm-8" style="margin-top: 12px;">
+        <div class="row">
+            <div class="row">
+                <div class="col-xs-4 text-right">
+                    <strong>Lugar</strong>
+                </div>
+                <div class="col-xs-8">
+                    <i class="glyphicon glyphicon-map-marker"></i> <span class="text-info"><strong>{{lugar}}</strong></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-4 text-right">
+                    <strong>Fecha</strong>
+                </div>
+                <div class="col-xs-8">
+                    <i class="glyphicon glyphicon-calendar"></i> <span class="text-info"><strong>{{fechas}}</strong></span>
+                </div>
+            </div>
+            <div class="row" style="margin-top:12px;">
+                <div class="col-xs-4 text-right">
+                    <strong>Organizadores</strong>
+                </div>
+                <div class="col-xs-8">
+                    <i class="glyphicon glyphicon-user"></i>
+                    {{FOR(organizadores)}}
+                    <br><a href="mailto:{{email}}">{{name}} <i class="glyphicon glyphicon-envelope"></i></a>
+                    {{ENDFOR()}}
+                </div>
+            </div>
+            <div class="row" style="margin-top:12px;">
+                <div class="col-xs-4 text-right">
+                    <strong>Delegados</strong>
+                </div>
+                <div class="col-xs-8">
+                    <i class="glyphicon glyphicon-user"></i>
+                    {{FOR(delegados)}}
+                    <br><a href="mailto:{{email}}">{{name}} <i class="glyphicon glyphicon-envelope"></i></a>
+                    {{ENDFOR()}}
+                </div>
+            </div>
+            <div class="row" style="margin-top:12px;">
+                <div class="col-xs-4 text-right">
+                    <strong>Precio</strong>
+                </div>
+                <div class="col-xs-8">
+                    <i class="glyphicon glyphicon-tag"></i><br>
+                    {{precio|md}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-4 text-right">
+                    <strong>Inscripción</strong>
+                </div>
+                <div class="col-xs-8">
+                    <i class="glyphicon glyphicon-pencil"></i> <a href="https://www.worldcubeassociation.org/competitions/{{id}}/register"
+                                                                  target="_blank" title="lleva a la página de la WCA donde puedes inscribirte">formulario</a>
+                </div>
+            </div>
+            {{IF(limite)}}
+            <div class='row'>
+                <div class='col-xs-4 text-right'>
+                    <strong>Aforo</strong>
+                </div>
+                <div class='col-xs-8'>
+                    <i class='glyphicon glyphicon-exclamation-sign'></i>
+                    <span title='El resto entrará en lista de espera' style='color:#ba4e7c'>{{limite}} competidores</span>
+                </div>
+            </div>
+            {{ENDIF()}}
+            <div class="row">
+                <div class="col-xs-4 text-right">
+                    <strong>Competidores</strong>
+                </div>
+                <div class="col-xs-8">
+                    <i class="glyphicon glyphicon-list"></i> <a href="https://www.worldcubeassociation.org/competitions/{{id}}/registrations"
+                                                                target="_blank" title="lleva a la página de la WCA donde puedes ver los competidores registrados">lista de inscritos</a>
+                </div>
+            </div>
+            {{IF(cubecompsId)}}
+            <div class='row' style='margin-top:12px;'>
+                <div class='col-xs-4 text-right'>
+                    <strong>Resultados en vivo</strong>
+                </div>
+                <div class='col-xs-8'>
+                    <i class='glyphicon glyphicon-eye-open'></i>
+                    <a href='http://cubecomps.com/live.php?cid={{cubecompsId}}' target='_blank'>cubecomps.com</a>
+                </div>
+            </div>
+            {{ENDIF()}}
+        </div>
+    </div>
+    {{IF(pruebas)}}
+    <div class="col-xs-12 col-sm-4" style="margin: 12px 0;">
+        <legend>Pruebas</legend>
+        <div style="max-height:240px;overflow-y:auto;">
+            {{FOR(pruebas)}}
+            <img src="{{file}}img/{{abbr}}.gif"> {{name}}<br>
+            {{ENDFOR()}}
+        </div>
+    </div>
+    {{ENDIF()}}
+</div>
+<br>
+<h1>Información general</h1>
+<p>Esta competición es <strong>oficial</strong>, lo que quiere decir que sólo por participar pasarás a ser miembro de la
+    <abbr title="World Cube Association - Asociación Mundial del Cubo">WCA</abbr>. Sin que
+    te cueste más, tendrás tus tiempos registrados para siempre, y podrás saber qué posición ocupas a nivel nacional,
+    continental y mundial.</p>
+<p>La competición se rige por el <a href="https://www.worldcubeassociation.org/regulations/translations/spanish-european/"
+                                    target="_blank">Reglamento de la WCA</a>, así que conviene que lo leas antes de competir para familiarizarte
+    con él.</p>
+
+<p><strong>Todos los competidores tienen que hacer de jueces o mezcladores cuando sean requeridos para ello.</strong>
+    El Reglamento contempla la eliminación del competidor que incumpla esta norma. Ten presente que aunque los
+    organizadores se encarguen de la coordinación y el delegado del cumplimiento de las normas, en realidad
+    somos todos y cada uno de los competidores los que tenemos que trabajar para que la competición salga adelante.</p>
+
+<p>Este vídeo puede venirte muy bien si no estás familizarizado con la mecánica de la competición. En él se explican
+    brevemente los pasos, como competidor y como juez, en las distintas pruebas:</p>
+
+<div class="row">
+    <div class="hidden-xs col-sm-3">
+    </div>
+    <div class="col-xs-12 col-sm-6">
+        <div class="embed-responsive embed-responsive-16by9">
+            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/8O_iWRGq4K8" allowfullscreen></iframe>
+        </div>
+    </div>
+    <div class="hidden-xs col-sm-3">
+    </div>
+</div>
+<br>
+<p>Se puede practicar un poco con el cronómetro oficial (StackMat &reg;) en el sitio de competición antes de que
+    ésta comience.
+    Cualquier marca o modelo de puzle es admitido, excepto los prohibidos expresamente en el Reglamento.
+    El competidor tiene que llevar los puzles en los que quiere competir; no los proporciona la Organización.</p>
+
+<p>No necesitas ser un supercrack para participar. Los tiempos que hagas sólo deberían preocuparte a ti (o bueno...
+    ¡ni eso!). Si quieres pasar un buen rato y conocer gente nueva, no lo dudes. ¡Apúntate!</p>
+
+<p>Para cualquier duda que puedas tener, no temas utilizar los enlaces de arriba. Escríbele a los organizadores; ellos
+    te aclaran cualquier duda encantados y te ayudarán en todo lo posible.</p>
+<br>
+
+<a name="horario"></a>
+{{horario|raw}}
+
+<a name="mapa"></a>
+<h1>Mapa</h1>
+<div class="row">
+    <div class="col-xs-12 col-sm-4">
+        {{direccion|md}}
+    </div>
+    <div class="col-xs-12 col-sm-8">
+        <div class="embed-responsive embed-responsive-16by9">
+            <iframe class="embed-responsive-item" src="https://maps.google.com/maps?q={{lat}},{{lng}}&amp;z=16&amp;output=embed"></iframe>
+        </div>
+    </div>
+</div>
+
+{{IF(alojamiento)}}
+<a name="alojamiento"></a>
+<h1>Alojamiento</h1>
+<div class="row">
+    <div class="col-xs-12">
+        {{alojamiento|md}}
+    </div>
+</div>
+{{ENDIF()}}
+
+{{IF(patrocinadores)}}
+<a name="patrocinadores"></a>
+<h1>Patrocinadores</h1>
+<div class="row">
+    <div class="col-xs-12">
+        {{patrocinadores|md}}
+    </div>
+</div>
+{{ENDIF()}}
+
+<p><br></p>

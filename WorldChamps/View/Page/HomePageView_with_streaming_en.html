@@ -1,0 +1,172 @@
+<div id="size-detector">
+    <div id="dummy" class="hidden-sm hidden-md hidden-lg">
+    </div>
+    <div id="twitch-embed"></div>
+</div>
+
+<div class="row">
+    <div class="col-xs-12 col-sm-6 greater">
+        <div class="animatedParent animateOnce" data-appear-top-offset='{{topOffset}}'>
+            <div class="animated fadeInUpShort">
+                <h2>Join the passion</h2>
+                <p>
+                    Come and join the party of the best speedcubers in Europe and in the World in an event designed
+                    to offer a new experience for competitors and visitors.
+                </p>
+            </div>
+        </div>
+        <div class="animatedParent animateOnce" data-appear-top-offset='{{topOffset}}'>
+            <div class="animated fadeInUpShort">
+                <h2>Keep the rhythm</h2>
+                <p>
+                    Four competition days plus one extra amusement day, Fun Zone,... in one of the most vibrant
+                    capital cities in Europe.
+                </p>
+            </div>
+        </div>
+        <div class="animatedParent animateOnce" data-appear-top-offset='{{topOffset}}'>
+            <div class="animated fadeInUpShort">
+                <h2>Don't miss a twist</h2>
+                <p>
+                    The 18 WCA official events, lot of rounds for each, your favorite top cubers, the excitement of
+                    the competition and the fun of friendship.
+                </p>
+            </div>
+        </div>
+        <div class="animatedParent animateOnce" data-appear-top-offset='{{topOffset}}'>
+            <div class="animated fadeInUpShort">
+                <p>
+                    Yeah, don't miss a twist because we are...
+                </p>
+                <h2>Ready to leave you breathless!</h2>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-6 enhanced-bg-container animatedParent animateOnce" data-appear-top-offset='{{topOffset}}'>
+        <div class="enhanced-bg-img animated fadeInUpShort" style="min-height:50em;background-image:url('{{file}}img/nails.jpg')">
+        </div>
+    </div>
+</div>
+
+<div class="row bg-primary">
+    <div class="col-xs-12 col-sm-3 greater-no-bottom-padding">
+        <div class="animatedParent animateOnce" data-appear-top-offset='{{topOffset}}'>
+            <div class="animated fadeInUpShort">
+                <h2>Schedule</h2>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-9 greater">
+        <div class="animatedParent animateOnce" data-appear-top-offset='{{topOffset}}'>
+            <div class="animated fadeInUpShort">
+
+                <h3><strong>July 19 - 22</strong> · Competition days</h3>
+                <p>
+                    Four days with all <strong>18 official events</strong>.
+                </p>
+                <h3><strong>July 23</strong> · Fun day</h3>
+                <p>
+                    After party for all the competitors and companions who want to <strong>stay together one more day without
+                    competing</strong>.
+                    <a href="{{link}}en/funday">+info</a>
+                </p>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-12 col-sm-6 enhanced-bg-container animatedParent animateOnce" data-appear-top-offset='{{topOffset}}'>
+        <div class="enhanced-bg-img animated fadeInUpShort" style="min-height:32em;background-image:url('{{file}}img/glass-pavilion-home.jpg')">
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-6 greater">
+        <div class="animatedParent animateOnce" data-appear-top-offset='{{topOffset}}'>
+            <div class="animated fadeInUpShort">
+                <h2>Glass pavilion, the venue</h2>
+                <p>
+                    Over 8.000 m<sup>2</sup> of pure fun!
+                </p>
+            </div>
+        </div>
+        <div class="animatedParent animateOnce" data-appear-top-offset='{{topOffset}}'>
+            <div class="animated fadeInUpShort">
+                <p>
+                    The Glass pavilion couldn't serve best our plans for this competition:
+                    in the city center, an extra large space with an astonishing lighting.
+                </p>
+            </div>
+        </div>
+        <div class="animatedParent animateOnce" data-appear-top-offset='{{topOffset}}'>
+            <div class="animated fadeInUpShort">
+                <p>
+                    Its versatility allows to fit the space to our needs, for what could be
+                    the largest championship ever in the WCA.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row bg-danger">
+    <!-- xs -->
+    <div class="col-xs-12 hidden-sm hidden-md hidden-lg greater">
+        <div class="animatedParent animateOnce text-center" data-appear-top-offset='{{topOffset}}'>
+            <img class="animated tada" src="{{file}}img/shout-out.png" />
+            <div class="animated fadeInUpShort">
+                <h2>Stay tuned!</h2>
+                <p>
+                    More exciting content coming soon
+                </p>
+            </div>
+        </div>
+    </div>
+    <!-- rest -->
+    <div class="hidden-xs col-sm-3 col-md-6 greater">
+        <div class="animatedParent animateOnce text-right" data-appear-top-offset='{{topOffset}}'>
+            <img class="animated tada" src="{{file}}img/shout-out.png" />
+        </div>
+    </div>
+    <div class="hidden-xs col-sm-9 col-md-6 greater">
+        <div class="animatedParent animateOnce" data-appear-top-offset='{{topOffset}}'>
+            <div class="animated fadeInUpShort">
+                <h2>Stay tuned!</h2>
+                <p>
+                    More exciting content coming soon
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://embed.twitch.tv/embed/v1.js"></script>
+<script>
+
+    function adjustTwitch()
+    {
+        var twitch = $('#twitch-embed');
+        if ($('#size-detector').find('div:visible').first().attr('id') == "dummy")
+        {
+            twitch.height(Math.round(twitch.width()*1.6));
+        } else {
+            twitch.height(Math.round(twitch.width()*0.4));
+        }
+    }
+
+    $( window ).resize(function() {
+        adjustTwitch();
+    });
+
+    $( document ).ready(function() {
+
+        new Twitch.Embed("twitch-embed", {
+            width: "100%",
+            height: "100%",
+            theme: "dark",
+            channel: "worldcubeassociation"
+        });
+        adjustTwitch();
+    });
+
+</script>

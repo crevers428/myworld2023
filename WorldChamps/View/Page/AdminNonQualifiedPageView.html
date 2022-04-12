@@ -1,0 +1,57 @@
+<div class="row">
+    <div class="col-md-12">
+
+        <h2 class="page-title">Non-qualified Competitors</h2>
+
+        {{IF(non_qualified)}}
+        <div class="table-responsive">
+
+            <table class="table">
+
+                <thead>
+                <tr>
+                    <th>Event</th>
+                    <th>Competitor</th>
+                    <th class="r">Best</th>
+                    <th class="r">Qualification result</th>
+                    <th class="r">Paid fee</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                {{FOR(non_qualified)}}
+                <tr>
+                    <td>{{event_name}}</td>
+                    <td>{{name}}</td>
+                    <td class="r">{{best}}</td>
+                    <td class="r">{{qual_result}}</td>
+                    <td class="r">{{paid_fee}}</td>
+                </tr>
+                {{ENDFOR()}}
+                <tr>
+                    <th colspan="4"></th>
+                    <th class="r">{{refund}}</th>
+                </tr>
+                </tbody>
+
+            </table>
+
+        </div>
+        {{ELSE()}}
+        <p>
+            All competitors have qualified for all their selected events!
+        </p>
+        {{ENDIF()}}
+
+        <a class="btn btn-default" href="{{link}}{{version-language}}/admin">
+            <span class="glyphicon glyphicon-home"></span> Admin
+        </a>
+        {{IF(non_qualified)}}
+        <a class="btn btn-danger" href="{{link}}{{version-language}}/admin/nonqualified/unregister">
+            <span class="glyphicon glyphicon-home"></span> Unregister - no refund
+        </a>
+        {{ENDIF()}}
+
+    </div>
+</div>
+<br>

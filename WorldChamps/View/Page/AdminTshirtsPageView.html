@@ -1,0 +1,55 @@
+<div class="row">
+    <div class="col-md-12">
+
+        <h2 class="page-title">T-shirts</h2>
+
+        {{IF(t_shirts)}}
+        <h2>Sizes and Quantities</h2>
+
+        <div class="table-responsive">
+
+            <table class="table">
+
+                <thead>
+                <tr>
+                    <th>Size</th>
+                    <th class="r">Quantity</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                {{FOR(t_shirts)}}
+                <tr>
+                    <td>{{size}}</td>
+                    <td class="r">{{quantity}}</td>
+                </tr>
+                {{ENDFOR()}}
+                </tbody>
+
+            </table>
+
+        </div>
+        {{ENDIF()}}
+
+        {{IF(emails_approved)}}
+        <h2>Approved staff who have not yet chosen their size [{{count_approved}}]</h2>
+
+        <textarea style="width:100%;height:200px;">{{FOR(emails_approved)}}{{name}} <{{email}}>
+{{ENDFOR()}}</textarea>
+        {{ENDIF()}}
+
+        {{IF(emails_all)}}
+        <h2>All staff (approved or otherwise) who have not yet chosen their size [{{count_all}}]</h2>
+
+        <textarea style="width:100%;height:200px;">{{FOR(emails_all)}}{{name}} <{{email}}>
+{{ENDFOR()}}</textarea>
+        {{ENDIF()}}
+
+        <br><br>
+        <a class="btn btn-default" href="{{link}}{{version-language}}/admin">
+            <span class="glyphicon glyphicon-home"></span> Admin
+        </a>
+
+    </div>
+</div>
+<br>

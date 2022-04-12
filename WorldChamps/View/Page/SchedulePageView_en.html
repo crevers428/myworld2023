@@ -1,0 +1,306 @@
+<div class="row">
+    <div class="col-xs-12">
+        <h2 class="page-title">Schedule</h2>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-12"> <!--  col-sm-10 -->
+        <p>
+            Click the icons to select or deselect a filtering. Click a round to see or hide its details. All start and end times are in AEST (UTC+10:00).
+        </p>
+        <p>
+            Please note that depending on the number of registered competitors, the schedule might be adjusted
+            later with minor changes.
+        </p>
+        <br />
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-12 col-sm-1">
+        <div class="schedule-icons"></div>
+    </div>
+    <div class="col-xs-12 col-sm-11">
+        <div class="table-responsive">
+            <table id="schedule-table" class="table">
+            </table>
+        </div>
+    </div>
+</div>
+
+<script>
+
+var events = {
+    e333:"3x3x3 Cube",
+    e222:"2x2x2 Cube",
+    e444:"4x4x4 Cube",
+    e555:"5x5x5 Cube",
+    e666:"6x6x6 Cube",
+    e777:"7x7x7 Cube",
+    e333bf:"3x3x3 Blindfolded",
+    e333fm:"3x3x3 Fewest Moves",
+    e333oh:"3x3x3 One-Handed",
+    e333ft:"3x3x3 With Feet",
+    eclock:"Clock",
+    eminx:"Megaminx",
+    epyram:"Pyraminx",
+    eskewb:"Skewb",
+    esq1:"Square-1",
+    e444bf:"4x4x4 Blindfolded",
+    e555bf:"5x5x5 Blindfolded",
+    e333mbf:"3x3x3 Multi-Blind"
+};
+
+var selectedIcons = {};
+
+var schedule = [
+    {day:"Thursday, 11th July"},
+    {start:800, end:1930, round:"REGISTRATION / TICKET SALES"},
+    {start:830, end:945, event:"e333fm", round:"Final (First Attempt)", timelimit:"60:00", movelimit:"80", side:true},
+    {start:930, end:1030, round:"Final (First Attempt)", side:true, event_related:"e333mbf", eventName:"Multi Puzzle Submission"},
+    {start:950, end:1020, event:"e333ft", round:"First", timelimit:"2:00", proceed:"12"},
+    {start:1030, end:1045, event:"e333ft", round:"Final", timelimit:"2:00"},
+    {start:1100, end:1200, event:"eclock", round:"First", timelimit:"1:00", proceed:"16"},
+    {start:1130, end:1245, event:"e333mbf", round:"Final (First Attempt)", timelimit:"10:00/cube up to 60:00", side:true},
+    {start:1200, end:1330, event:"esq1", round:"First", timelimit:"1:00", proceed:"80"},
+    {start:1330, end:1430, round:"LUNCH"},
+    {start:1415, end:1530, event:"e333fm", round:"Final (Second Attempt)", timelimit:"60:00", movelimit:"80", side:true},
+    {start:1430, end:1730, event:"e777", round:"First", cutoff:"4.00", timelimit:"6:00", proceed:"16"},
+    {start:1430, end:1730, event:"e666", round:"First", cutoff:"3.00", timelimit:"5:00", proceed:"16"},
+    {start:1530, end:1630, event:"e444bf", round:"Final", timelimit:"15:00 for 3 (cumulative)", side:true},
+    {start:1730, end:1930, event:"eminx", round:"First", cutoff:"1:30", timelimit:"3:00", proceed:"16"},
+    {start:1830, end:1945, event:"e333fm", round:"Final (Third Attempt)", timelimit:"60:00", movelimit:"80", side:true},
+    {separator:true},
+    {day:"Friday, 12th July"},
+    {start:800, end:1820, round:"REGISTRATION / TICKET SALES"},
+    {start:900, end:915, round:"Final (Second Attempt)", side:true, event_related:"e333mbf", eventName:"Multi Puzzle Submission"},
+    {start:900, end:1030, event:"e555", round:"First", timelimit:"3:00", proceed:"80"},
+    {start:1030, end:1200, event:"e333mbf", round:"Final (Second Attempt)", timelimit:"10:00/cube up to 60:00", side:true},
+    {start:1030, end:1300, event:"e444", round:"First", timelimit:"2:00", proceed:"80"},
+    {start:1300, end:1330, round:"LUNCH"},
+    {start:1330, end:1445, event:"eskewb", round:"Combined First", cutoff:"10.00", timelimit:"1:00", proceed:"80"},
+    {start:1400, end:1600, event:"e555bf", round:"Final", timelimit:"30:00 for 3 (cumulative)", side:true},
+    {start:1445, end:1545, event:"esq1", round:"Second", timelimit:"1:00", proceed:"16"},
+    {start:1445, end:1645, event:"epyram", round:"Combined First", cutoff:"10.00", timelimit:"1:00", proceed:"80"},
+    {start:1645, end:1715, round:"OPENING CEREMONY"},
+	{start:1715, end:1730, event:"eclock", round:"Final", timelimit:"1:00"},
+    {start:1730, end:1755, event:"e666", round:"Final", timelimit:"5:00"},
+    {start:1755, end:1820, event:"e777", round:"Final", timelimit:"6:00"},
+    {start:1820, end:1835, event:"esq1", round:"Final", timelimit:"1:00"},
+    {separator:true},
+    {day:"Saturday, 13th July"},
+    {start:830, end:2030, round:"REGISTRATION / TICKET SALES"},
+    {start:900, end:1100, event:"e222", round:"Combined First", cutoff:"10.00", timelimit:"1:00", proceed:"80"},
+    {start:1100, end:1240, event:"e333oh", round:"First", timelimit:"1:00", proceed:"80"},
+    {start:1200, end:1300, event:"e444", round:"Second", timelimit:"2:00", proceed:"16"},
+    {start:1300, end:1330, round:"LUNCH"},
+    {start:1330, end:1430, event:"e333bf", round:"First", timelimit:"5:00 for 3 (cumulative)", proceed:"80"},
+    {start:1430, end:1800, event:"e333", round:"First", timelimit:"2:00", proceed:"400"},
+    {start:1710, end:1800, event:"e555", round:"Second", timelimit:"3:00", proceed:"16"},
+    {start:1800, end:1820, event:"epyram", round:"Second", timelimit:"1:00", proceed:"16"},
+    {start:1820, end:1840, event:"eskewb", round:"Second", timelimit:"1:00", proceed:"16"},
+    {start:1840, end:1930, round:"DINNER"},
+    {start:1930, end:2030, round:"RUBIK'S NATIONS CUP 2019"},
+    {separator:true},
+    {day:"Sunday, 14th July"},
+    {start:900, end:1800, round:"TICKET SALES"},
+    {start:900, end:1030, event:"e333", round:"Second", timelimit:"2:00", proceed:"80"},
+    {start:1030, end:1110, event:"e222", round:"Second", timelimit:"1:00", proceed:"80"},
+    {start:1110, end:1130, event:"e333oh", round:"Second", timelimit:"1:00", proceed:"16"},
+    {start:1130, end:1150, event:"e333bf", round:"Second", timelimit:"5:00 for 3 (cumulative)", proceed:"16"},
+    {start:1150, end:1210, event:"e222", round:"Semi Final", timelimit:"1:00", proceed:"16"},
+    {start:1210, end:1230, event:"e333", round:"Semi Final", timelimit:"2:00", proceed:"16"},
+    {start:1230, end:1330, round:"LUNCH"},
+    {start:1330, end:1350, event:"eminx", round:"Final", timelimit:"3:00"},
+    {start:1350, end:1410, event:"eskewb", round:"Final", timelimit:"1:00"},
+    {start:1410, end:1430, event:"epyram", round:"Final", timelimit:"1:00"},
+    {start:1430, end:1450, event:"e333oh", round:"Final", timelimit:"1:00"},
+    {start:1450, end:1510, event:"e333bf", round:"Final", timelimit:"5:00 for 3 (cumulative)"},
+    {start:1510, end:1530, event:"e555", round:"Final", timelimit:"3:00"},
+    {start:1530, end:1550, event:"e444", round:"Final", timelimit:"2:00"},
+    {start:1550, end:1610, event:"e222", round:"Final", timelimit:"1:00"},
+    {start:1615, end:1800, event:"e333", round:"Final", timelimit:"2:00"},
+    {start:1800, round:"WINNERS' CEREMONY"},
+    {separator:true}
+];
+
+function getCell(index,property)
+{
+var cell = schedule[index][property];
+if (!cell) cell = '';
+return cell;
+}
+
+function getCellTime(index,property)
+{
+var cell = getCell(index,property) + "";
+if (cell) {
+    cell = cell.substr(0,cell.length-2) + ":" + cell.substr(cell.length-2,2);
+}
+return cell;
+}
+
+function getEventName(event,eventName)
+{
+if (eventName) return eventName;
+if (events[event]) event = events[event];
+return '<b>'+event+'</b>';
+}
+
+function scheduleSectionClick(sectionId)
+{
+var showcaseToOpen = $('#showcase_div_'+sectionId+':visible');
+if (showcaseToOpen.length) {
+    showcaseToOpen.slideUp('fast',function() {
+        $('#showcase_'+sectionId).hide();
+    })
+} else {
+    showcaseToOpen = $('#showcase_div_'+sectionId);
+    showcaseToOpen.parent().parent().show();
+    showcaseToOpen.slideDown('fast');
+}
+}
+
+function getShowcaseLayout(index)
+{
+var html = '';
+if (schedule[index]['cutoff']) {
+    html += "<span>Cutoff <span class='glyphicon glyphicon-scissors'></span> <b>"+schedule[index]['cutoff']+"</b></span>";
+}
+if (schedule[index]['timelimit']) {
+    if (html) html += ' | ';
+    html += "<span>Time limit <span class='glyphicon glyphicon-hourglass'></span> <b>"+schedule[index]['timelimit']+"</b></span>";
+}
+if (schedule[index]['movelimit']) {
+    if (html) html += ' | ';
+    html += "<span>Move limit <span class='glyphicon glyphicon-alert'></span> <b>"+schedule[index]['movelimit']+"</b></span>";
+}
+if (schedule[index]['proceed']) {
+    if (html) html += ' | ';
+    html += "<span>Proceed <span class='glyphicon glyphicon-forward'></span> <b>"+schedule[index]['proceed']+"</b></span>";
+}
+html = "<tr id='showcase_"+index+"' class='showcase'><td colspan='5'><div id='showcase_div_"+index+"' class='showcase-div'>" + html;
+html += "</div></td></tr>";
+return html;
+}
+
+function iconClick(event)
+{
+if (event=='all') {
+    selectedIcons = {};
+    $('.cubing-icon').css('color','inherit');
+    $('.icon-all').css('background-color','#00843D');
+} else {
+    var extEvent = 'e'+event;
+    selectedIcons[extEvent] = !selectedIcons[extEvent];
+    $('.icon-'+event).css('color',selectedIcons[extEvent] ? '#00843D' : 'inherit');
+    $('.icon-all').css('background-color','rgb(33,33,33)');
+}
+renderTable(false);
+}
+
+function __renderTable()
+{
+// check visibility
+var countVisible = 0;
+var property;
+for (property in selectedIcons) {
+    if (selectedIcons[property]) countVisible++;
+}
+var nonEventsAreVisible = false;
+var firstVisible;
+for (var i=schedule.length-1; i>=0; i--) {
+    if (!countVisible) {                                        // all are visible
+        schedule[i].visible = true;
+    } else if (schedule[i].event) {                             // round - visible is event is visible
+        schedule[i].visible = selectedIcons[schedule[i].event];
+        if (schedule[i].visible) nonEventsAreVisible = true;
+    } else if (schedule[i].event_related) {                     // non event but related (i.e puzzle submission)
+        schedule[i].visible = selectedIcons[schedule[i].event_related];
+    } else {                                                    // non events (i.e lunch)
+            schedule[i].visible = nonEventsAreVisible;
+            if (schedule[i].separator) nonEventsAreVisible = false;
+    }
+    if (schedule[i].visible) firstVisible = i;
+}
+if (schedule[firstVisible].separator) schedule[firstVisible].visible = false;
+
+// render table
+var tableHTML = "";
+for (var index = 0; index < schedule.length; index++) {
+    if (schedule[index].visible) {
+        if (schedule[index].day) {
+            tableHTML +="<thead><tr class='schedule-day'><th colspan='5'>"+schedule[index].day+"</th></tr>";
+            tableHTML +="<tr class='schedule-header'><th>Start</th><th>End</th><th>Main Stage</th><th>Round</th><th>Side Rooms</th></tr></thead>";
+        } else if (schedule[index].special_day) {
+            tableHTML +="<thead><tr class='schedule-day'><th colspan='5'>"+schedule[index].special_day+"</th></tr>";
+            tableHTML +="<tr class='schedule-header'><th>Start</th><th>End</th><th></th><th>Outdoor Activity</th><th></th></tr></thead>";
+        } else {
+            tableHTML += schedule[index].event ?
+                    "<tr id='section_"+index+"' onclick='scheduleSectionClick("+index+");' class='schedule-clickable "+schedule[index].event+"'>"
+                    :
+                    "<tr" + (schedule[index].separator ? "" : " class='not-an-event'") + ">";
+            tableHTML += "<td>" + getCellTime(index,"start")+"</td><td>"+
+                    getCellTime(index,"end")+"</td><td>"+
+                    (schedule[index]['side'] ? '' : getEventName(getCell(index,schedule[index].event?"event":"event_related"),schedule[index].eventName)) + "</td><td>" +
+                    getCell(index,"round")+"</td><td>"+
+                    (schedule[index]['side'] ? getEventName(getCell(index,schedule[index].event?"event":"event_related"),schedule[index].eventName) : '') + "</td></tr>";
+            if (schedule[index].event) {
+                tableHTML += getShowcaseLayout(index);
+            }
+        }
+    }
+}
+$('#schedule-table').html(tableHTML);
+
+$('.schedule-clickable').mouseenter(function() {
+    var index = parseInt(this.id.substr(this.id.indexOf('_')+1),10);
+    $('.'+schedule[index].event).css('background-color','rgb(227,227,255)');
+}).mouseleave(function() {
+    var index = parseInt(this.id.substr(this.id.indexOf('_')+1),10);
+    $('.'+schedule[index].event).css('background-color','inherit');
+});
+}
+
+function renderTable(noFade)
+{
+if (noFade) {
+    __renderTable();
+} else {
+    var table = $('#schedule-table');
+    table.fadeOut('fast', function() {
+        __renderTable();
+        table.fadeIn();
+    });
+}
+}
+
+$(document).ready(function() {
+
+/*
+$(window).scroll(function () {
+    //console.log($(window).scrollTop())
+    if ($(window).scrollTop() > 81) {
+        $('.schedule-icons').addClass('icons-fixed');
+    }
+    if ($(window).scrollTop() <= 81) {
+        $('.schedule-icons').removeClass('icons-fixed');
+    }
+});
+*/
+
+var event;
+var rawEvent;
+var icons = $('.schedule-icons');
+icons.append("<span class='icon-all' title='All the events' onclick='iconClick(\"all\")'><div>ALL</div></span>");
+for (event in events) {
+    rawEvent = event.substr(1);
+    icons.append("<span class='cubing-icon icon-"+rawEvent+"' title='"+events[event]+"' onclick='iconClick(\""+rawEvent+"\")'></span>");
+}
+
+renderTable(true);
+
+});
+
+</script>

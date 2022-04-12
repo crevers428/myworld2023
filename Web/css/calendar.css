@@ -1,0 +1,10 @@
+#calendar {
+    background-color: #ffffff;
+    padding: 20px;
+}
+.fc-content {
+    font-weight: 800;
+}
+.staff_event .fc-content {
+    font-weight: 200;
+}

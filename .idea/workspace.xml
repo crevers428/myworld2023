@@ -1,0 +1,619 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BookmarkManager">
+    <bookmark url="file://$PROJECT_DIR$/WorldChamps/View/Page/TravelPageView_en.html" line="47" mnemonic="6" />
+    <bookmark url="file://$PROJECT_DIR$/WorldChamps/View/Page/MyWC2019PageView_with_schedule_es.html" line="72" mnemonic="0" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="f97d5e92-a884-447c-9443-0b5825575206" name="Default" comment="" />
+    <ignored path="wc2019.iws" />
+    <ignored path=".idea/workspace.xml" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="DaemonCodeAnalyzer">
+    <disable_hints />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FavoritesManager">
+    <favorites_list name="wc2019" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="__private__.inc" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/WorldChamps/Repo/__private__.inc">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="5" column="15" selection-start="143" selection-end="143" vertical-scroll-proportion="-3.125" vertical-offset="0" max-vertical-offset="285">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="__private_oauth_wca__.inc" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/WorldChamps/Repo/__private_oauth_wca__.inc">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="8" column="1" selection-start="295" selection-end="295" vertical-scroll-proportion="-5.0" vertical-offset="0" max-vertical-offset="210">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="__private_stripe__.inc" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/WorldChamps/Repo/__private_stripe__.inc">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="6" column="43" selection-start="183" selection-end="183" vertical-scroll-proportion="-3.75" vertical-offset="0" max-vertical-offset="210">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="__private_wca__.inc" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/WorldChamps/Repo/__private_wca__.inc">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="4" column="13" selection-start="125" selection-end="125" vertical-scroll-proportion="0.10695187" vertical-offset="0" max-vertical-offset="561">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindManager">
+    <FindUsagesManager>
+      <setting name="OPEN_NEW_TAB" value="false" />
+    </FindUsagesManager>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="changedFiles">
+      <list>
+        <option value="$PROJECT_DIR$/WorldChamps/View/Page/FundayPageView.php" />
+        <option value="$PROJECT_DIR$/WorldChamps/View/Page/WorldChampsPageView_es.html" />
+        <option value="$PROJECT_DIR$/WorldChamps/View/Page/WorldChampsPageView_en.html" />
+        <option value="$PROJECT_DIR$/WorldChamps/View/Page/CompetitorsPageView_es.html" />
+        <option value="$PROJECT_DIR$/WorldChamps/View/Page/CompetitorsPageView_en.html" />
+        <option value="$PROJECT_DIR$/WorldChamps/View/Page/AdminReimbursementsPageView.php" />
+        <option value="$PROJECT_DIR$/WorldChamps/Repo/RepoPayments.php" />
+        <option value="$PROJECT_DIR$/WorldChamps/View/Email/RefundEmailView.php" />
+        <option value="$PROJECT_DIR$/App/Repo/Repo.php" />
+        <option value="$PROJECT_DIR$/WorldChamps/View/Page/LodgingPageView_es.html" />
+        <option value="$PROJECT_DIR$/WorldChamps/View/Page/LodgingPageView_en.html" />
+        <option value="$PROJECT_DIR$/WorldChamps/View/Page/TicketsPageView_en.html" />
+        <option value="$PROJECT_DIR$/Web/css/wc2019.css" />
+        <option value="$PROJECT_DIR$/WorldChamps/Repo/RepoStaff.php" />
+        <option value="$PROJECT_DIR$/WorldChamps/View/Page/AdminTshirtsPageView.php" />
+        <option value="$PROJECT_DIR$/WorldChamps/View/Page/AdminTshirtsPageView.html" />
+        <option value="$PROJECT_DIR$/WorldChamps/View/Page/AdminNonqualifiedPageView.php" />
+        <option value="$PROJECT_DIR$/WorldChamps/View/Page/AdminNonQualifiedPageView.html" />
+        <option value="$PROJECT_DIR$/WorldChamps/View/Page/AdminPageView.html" />
+        <option value="$PROJECT_DIR$/WorldChamps/Repo/RepoTickets.php" />
+        <option value="$PROJECT_DIR$/App/Pdo/PdoConnection.php" />
+        <option value="$PROJECT_DIR$/WorldChamps/View/Page/RegistrationPageView_es.html" />
+        <option value="$PROJECT_DIR$/WorldChamps/View/Page/RegistrationPageView_en.html" />
+        <option value="$PROJECT_DIR$/App/View/Page/PageView.php" />
+        <option value="$PROJECT_DIR$/Bootstrap/View/Page/BootstrapPageView.php" />
+        <option value="$PROJECT_DIR$/WorldChamps/View/Page/TicketsPageView_es.html" />
+        <option value="$PROJECT_DIR$/WorldChamps/View/Page/TicketsPageView_before_reg_close_en.html" />
+        <option value="$PROJECT_DIR$/WorldChamps/View/Email/RefundEmailView.html" />
+        <option value="$PROJECT_DIR$/WorldChamps/View/Page/AdminReimbursementsPageView.html" />
+        <option value="$PROJECT_DIR$/WorldChamps/View/Page/MyWC2019PageView.php" />
+        <option value="$PROJECT_DIR$/WorldChamps/WorldChampsApplication.php" />
+        <option value="$PROJECT_DIR$/WorldChamps/View/Page/SchedulePageView_es.html" />
+        <option value="$PROJECT_DIR$/WorldChamps/View/Page/SchedulePageView_en.html" />
+        <option value="$PROJECT_DIR$/WorldChamps/View/Page/EventsPageView_en.html" />
+        <option value="$PROJECT_DIR$/WorldChamps/View/Page/EventsPageView_es.html" />
+        <option value="$PROJECT_DIR$/WorldChamps/View/Page/FundayPageView_es.html" />
+        <option value="$PROJECT_DIR$/WorldChamps/View/Page/FundayPageView_en.html" />
+        <option value="$PROJECT_DIR$/Web/css/calendar.css" />
+        <option value="$PROJECT_DIR$/WorldChamps/Repo/RepoUsers.php" />
+        <option value="$PROJECT_DIR$/WorldChamps/View/Page/MyWC2019PageView_es.html" />
+        <option value="$PROJECT_DIR$/WorldChamps/View/Page/MyWC2019PageView_en.html" />
+        <option value="$PROJECT_DIR$/Web/css/wc_01.css" />
+        <option value="$PROJECT_DIR$/WorldChamps/View/Page/HomePageView_es.html" />
+        <option value="$PROJECT_DIR$/WorldChamps/View/Page/HomePageView_en.html" />
+        <option value="$PROJECT_DIR$/WorldChamps/Repo/RepoAdmin.php" />
+        <option value="$PROJECT_DIR$/WorldChamps/View/Page/CollaboratorsPageView_es.html" />
+        <option value="$PROJECT_DIR$/WorldChamps/View/Page/CollaboratorsPageView_en.html" />
+        <option value="$PROJECT_DIR$/WorldChamps/Repo/__private__.inc" />
+        <option value="$PROJECT_DIR$/WorldChamps/Repo/__private_oauth_wca__.inc" />
+        <option value="$PROJECT_DIR$/WorldChamps/Repo/__private_stripe__.inc" />
+        <option value="$PROJECT_DIR$/WorldChamps/Repo/__private_wca__.inc" />
+      </list>
+    </option>
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="51" />
+    <option name="y" value="27" />
+    <option name="width" value="1315" />
+    <option name="height" value="741" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+    <OptionsSetting value="true" id="Add" />
+    <OptionsSetting value="true" id="Remove" />
+    <OptionsSetting value="true" id="Checkout" />
+    <OptionsSetting value="true" id="Update" />
+    <OptionsSetting value="true" id="Status" />
+    <OptionsSetting value="true" id="Edit" />
+    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="0" id="Remove" />
+  </component>
+  <component name="ProjectReloadState">
+    <option name="STATE" value="0" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1" splitterProportion="0.5">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="wc2019" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="wc2019" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="wc2019 (blank)" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="wc2019" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="wc2019 (blank)" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WorldChamps" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="wc2019" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="wc2019 (blank)" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WorldChamps" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Repo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="wc2019" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="wc2019 (blank)" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WorldChamps" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Lib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="FullScreen" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../efmc/Efmc/EfmcApplication.php" />
+    <property name="SearchEverywhereHistory" value="&#10;venue" />
+    <property name="recentsLimit" value="5" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/WorldChamps/View/Page" />
+      <recent name="$PROJECT_DIR$/Web/css" />
+      <recent name="$PROJECT_DIR$/WorldChamps/View/Email" />
+      <recent name="$PROJECT_DIR$/WorldChamps/Repo" />
+      <recent name="$PROJECT_DIR$/WorldChamps/Form" />
+    </key>
+  </component>
+  <component name="RunManager" selected="PHP Script.RepoPayments.php">
+    <configuration default="false" name="RepoPayments.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/WorldChamps/Repo/RepoPayments.php">
+      <method />
+    </configuration>
+    <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
+      <TestRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpLocalRunConfigurationType" factoryName="PHP Console">
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug" singleton="true">
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
+      <method />
+    </configuration>
+    <list size="1">
+      <item index="0" class="java.lang.String" itemvalue="PHP Script.RepoPayments.php" />
+    </list>
+    <recent_temporary>
+      <list size="1">
+        <item index="0" class="java.lang.String" itemvalue="PHP Script.RepoPayments.php" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f97d5e92-a884-447c-9443-0b5825575206" name="Default" comment="" />
+      <created>1511285365232</created>
+      <updated>1511285365232</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="TodoView" selected-index="0">
+    <todo-panel id="selected-file">
+      <are-packages-shown value="false" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="false" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="false" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="false" />
+    </todo-panel>
+    <todo-panel id="default-changelist">
+      <are-packages-shown value="false" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="false" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="51" y="27" width="1315" height="741" extended-state="0" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3287037" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24901497" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.34357762" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3273906" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24940991" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+    </layout>
+  </component>
+  <component name="Vcs.Log.UiProperties">
+    <option name="RECENTLY_FILTERED_USER_GROUPS">
+      <collection />
+    </option>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="myTodoPanelSettings">
+      <TodoPanelSettings />
+    </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <option name="time" value="1" />
+    </breakpoint-manager>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/WorldChamps/View/Page/LodgingPageView.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="11" selection-start="116" selection-end="116" vertical-scroll-proportion="0.35714287" vertical-offset="0" max-vertical-offset="390" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WorldChamps/View/Page/MDInstructionsPageView.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="11" selection-start="111" selection-end="111" vertical-scroll-proportion="-1.879257" vertical-offset="727" max-vertical-offset="1050" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WorldChamps/View/Page/PaymentPageView.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="11" selection-start="116" selection-end="116" vertical-scroll-proportion="0.10714286" vertical-offset="84" max-vertical-offset="420" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WorldChamps/View/Page/MyWC2019AccessPageView.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="11" selection-start="121" selection-end="121" vertical-scroll-proportion="0.35714287" vertical-offset="0" max-vertical-offset="390" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/App/View/Page/PageView.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="32" column="49" selection-start="1355" selection-end="1355" vertical-scroll-proportion="0.3581818" vertical-offset="283" max-vertical-offset="1215" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Bootstrap/View/Page/BootstrapPageView.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="36" selection-start="650" selection-end="650" vertical-scroll-proportion="0.47026023" vertical-offset="47" max-vertical-offset="585" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WorldChamps/View/Page/WorldChampsPageView.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="28" column="24" selection-start="736" selection-end="736" vertical-scroll-proportion="0.47026023" vertical-offset="152" max-vertical-offset="1140" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WorldChamps/Repo/RepoTickets.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="31" selection-start="305" selection-end="305" vertical-scroll-proportion="-0.6" vertical-offset="495" max-vertical-offset="2100" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WorldChamps/View/Page/TicketsPageView_before_reg_close_en.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="524" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WorldChamps/View/Page/TicketsPageView_before_reg_close_es.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="499" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WorldChamps/View/Page/TicketsPageView_es.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="27" selection-start="1062" selection-end="1062" vertical-scroll-proportion="0.0" vertical-offset="360" max-vertical-offset="570" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WorldChamps/View/Page/TicketsPageView_en.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="8" selection-start="1069" selection-end="1069" vertical-scroll-proportion="-15.25" vertical-offset="24" max-vertical-offset="585" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WorldChamps/View/Email/RefundEmailView.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="68" selection-start="498" selection-end="498" vertical-scroll-proportion="0.3463588" vertical-offset="0" max-vertical-offset="563" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WorldChamps/View/Page/AdminReimbursementsPageView.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="11" selection-start="128" selection-end="128" vertical-scroll-proportion="0.21314387" vertical-offset="0" max-vertical-offset="563" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WorldChamps/View/Page/AdminReimbursementsPageView.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="33" column="101" selection-start="1154" selection-end="1154" vertical-scroll-proportion="0.6090909" vertical-offset="160" max-vertical-offset="1395" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WorldChamps/View/Page/MyWC2019PageView_before_reg_close.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="420" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WorldChamps/View/Page/MyWC2019PageView_before_reg_close_en.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="12540" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WorldChamps/View/Page/MyWC2019PageView_after_reg_close_en.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="333" column="74" selection-start="17532" selection-end="17532" vertical-scroll-proportion="0.4909091" vertical-offset="4725" max-vertical-offset="11565" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WorldChamps/View/Page/SchedulePageView_en.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="81" column="73" selection-start="3500" selection-end="3506" vertical-scroll-proportion="0.33272728" vertical-offset="1032" max-vertical-offset="4740" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WorldChamps/View/Page/SchedulePageView_es.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="172" column="27" selection-start="8239" selection-end="8245" vertical-scroll-proportion="0.0" vertical-offset="2397" max-vertical-offset="4755" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WorldChamps/View/Page/EventsPageView_en.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="70" column="20" selection-start="2863" selection-end="2867" vertical-scroll-proportion="0.3181818" vertical-offset="875" max-vertical-offset="5400" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WorldChamps/View/Page/EventsPageView_es.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="70" column="20" selection-start="2927" selection-end="2931" vertical-scroll-proportion="-0.0" vertical-offset="1050" max-vertical-offset="5400" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WorldChamps/View/Page/FundayPageView_es.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="50" column="58" selection-start="2037" selection-end="2037" vertical-scroll-proportion="-14.375" vertical-offset="405" max-vertical-offset="1290" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WorldChamps/View/Page/FundayPageView_en.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="51" column="65" selection-start="2000" selection-end="2000" vertical-scroll-proportion="-31.875" vertical-offset="0" max-vertical-offset="1275" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WorldChamps/View/Page/MyWC2019PageView_before_reg_close_es.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="324" column="0" selection-start="17219" selection-end="17219" vertical-scroll-proportion="0.027272727" vertical-offset="4845" max-vertical-offset="12510" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WorldChamps/View/Page/MyWC2019PageView_after_reg_close.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="0" selection-start="195" selection-end="195" vertical-scroll-proportion="0.29307282" vertical-offset="0" max-vertical-offset="563" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WorldChamps/View/Page/MyWC2019PageView.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="24" selection-start="374" selection-end="374" vertical-scroll-proportion="0.37300178" vertical-offset="0" max-vertical-offset="563" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WorldChamps/View/Page/MyWC2019PageView_with_schedule_es.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="898" column="8" selection-start="40986" selection-end="40986" vertical-scroll-proportion="-15.416667" vertical-offset="13100" max-vertical-offset="13650">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Web/css/calendar.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="18" selection-start="147" selection-end="147" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="225" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WorldChamps/WorldChampsApplication.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="767" column="18" selection-start="26113" selection-end="26113" vertical-scroll-proportion="-0.43636364" vertical-offset="11505" max-vertical-offset="12990" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WorldChamps/View/Page/ContactPageView_en.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="587" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WorldChamps/View/Page/MyWC2019PageView_after_reg_close_es.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="36" column="0" selection-start="1471" selection-end="1471" vertical-scroll-proportion="0.027272727" vertical-offset="525" max-vertical-offset="11535" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WorldChamps/View/Page/MyWC2019PageView_schedule_for_staff_es.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="12735" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WorldChamps/View/Page/MyWC2019PageView_schedule_for_staff_en.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="12750" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WorldChamps/Repo/RepoUsers.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="113" column="31" selection-start="4292" selection-end="4306" vertical-scroll-proportion="0.0" vertical-offset="1695" max-vertical-offset="6870" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WorldChamps/View/Page/MyWC2019PageView_es.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="68" column="0" selection-start="2836" selection-end="2836" vertical-scroll-proportion="0.0" vertical-offset="1020" max-vertical-offset="12750" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WorldChamps/View/Page/MyWC2019PageView_en.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="835" column="9" selection-start="37966" selection-end="37966" vertical-scroll-proportion="0.6727273" vertical-offset="12155" max-vertical-offset="12765" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WorldChamps/View/Page/HomePageView_es.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2190" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WorldChamps/View/Page/HomePageView_en.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2190" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WorldChamps/View/Page/HomePageView_with_streaming_es.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="142" column="0" selection-start="5996" selection-end="6716" vertical-scroll-proportion="-1.0416666" vertical-offset="2105" max-vertical-offset="2655" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WorldChamps/View/Page/HomePageView_with_streaming_en.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="171" column="9" selection-start="6521" selection-end="6521" vertical-scroll-proportion="0.94545454" vertical-offset="2045" max-vertical-offset="2655" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Web/css/wc_01.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="0" selection-start="303" selection-end="303" vertical-scroll-proportion="0.42334494" vertical-offset="42" max-vertical-offset="6795" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TCPDF/tcpdf.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3998" column="20" selection-start="127635" selection-end="127635" vertical-scroll-proportion="0.67454547" vertical-offset="58609" max-vertical-offset="366405" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WorldChamps/Repo/RepoAdmin.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="488" column="83" selection-start="18511" selection-end="18511" vertical-scroll-proportion="0.0" vertical-offset="7320" max-vertical-offset="12810" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WorldChamps/View/Page/CollaboratorsPageView_en.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="139" column="31" selection-start="6607" selection-end="6607" vertical-scroll-proportion="0.24452555" vertical-offset="1951" max-vertical-offset="2535" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WorldChamps/View/Page/CollaboratorsPageView_es.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="153" column="0" selection-start="7453" selection-end="7453" vertical-scroll-proportion="0.890511" vertical-offset="1807" max-vertical-offset="2595" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WorldChamps/Lib/WcaOauth.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2490">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WorldChamps/Repo/__private__.inc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="15" selection-start="143" selection-end="143" vertical-scroll-proportion="-3.125" vertical-offset="0" max-vertical-offset="285">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WorldChamps/Repo/__private_oauth_wca__.inc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="1" selection-start="295" selection-end="295" vertical-scroll-proportion="-5.0" vertical-offset="0" max-vertical-offset="210">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WorldChamps/Repo/__private_stripe__.inc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="43" selection-start="183" selection-end="183" vertical-scroll-proportion="-3.75" vertical-offset="0" max-vertical-offset="210">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WorldChamps/Repo/__private_wca__.inc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="13" selection-start="125" selection-end="125" vertical-scroll-proportion="0.10695187" vertical-offset="0" max-vertical-offset="561">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
+

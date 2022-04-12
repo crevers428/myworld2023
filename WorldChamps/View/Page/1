@@ -1,0 +1,92 @@
+<div class="row">
+    <div class="col-xs-12">
+        <h2 class="page-title">City Information</h2>
+        <a href="http://bit.ly/2AmWtVl">
+            <picture>
+                <source media="(min-width: 768px)" srcset="/img/MCB728.gif">
+                <img src="/img/MCBrectangle.gif" style="margin-left:auto; margin-right:auto; display:block;"/>
+            </picture>
+        </a>
+    </div>
+    <div class="col-xs-12">
+        <h2 class="page-title">Transportation</h2>
+        <h2>Venue</h2>
+        <p>
+            The main competition room is the Plenary at the Melbourne Convention and Exhibition Centre. There are also rooms for side events and relaxing within the venue.
+	    <br>
+            The Plenary is located within the Convention Centre.
+        </p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12 col-sm-6 col-md-4">
+        <img style="margin-bottom:10px;" src="https://mcec.com.au/-/media/mcec/images/visit/key-info/getting-there/mcec_tram.ashx" width="100%;" frameborder="0" style="border:0" allowfullscreen>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-8">
+        <p style="margin-bottom: 0">
+            <strong>Address</strong>: 1 Convention Centre Place, South Wharf.<br>
+            <strong>Public Transportation</strong>: The Melbourne Convention and Exhibition Centre is located in the heart of Melbourne's South Wharf.
+            <br><br>
+            <span class="label metro-stop" style="margin-right:10px;">Train</span>   The closest train stations are Southern Cross station (9 minute walk), and Flinders Street station (12 minute walk).
+			<br>
+			<br>
+			<span class="label metro-stop" style="margin-right:10px;">Tram on Clarendon</span>   Tram routes 96, 109 and 12 (Stop 124A Casino/MCEC) will all take you to the Clarendon Street entrance of the centre.
+			<br>
+			<br>
+			<span class="label metro-stop" style="margin-right:10px;">Tram on Flinders</span>Tram routes 48 and 70 (Stop D5) take you to Flinders Street, a short walk away from the venue.
+			<br>
+        </p>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-xs-12">
+        <h2>Airport Connection</h2>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12 col-sm-6">
+        <iframe width="100%" height="250" id="gmap_canvas" src="https://maps.google.com/maps?q=melbourne%20airport&t=&z=9&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="10px" marginwidth="0"></iframe>
+    </div>
+    <div class="col-xs-12 col-sm-6">
+        <p>
+            <a href="https://www.melbourneairport.com.au/" target="_blank">Melbourne Airport</a>
+            is located approximately 25 kilometres North-West of the city. The cheapest way to travel to the city is via the <a href="https://www.skybus.com.au/" target="_blank">SkyBus</a>, which departs frequently all 24 hours of the day. A one-way ticket costs 19.50 AUD.
+			The SkyBus runs from the airport to Southern Cross railway station, which is only a 10 minute walk from the competition venue and surrounding areas.
+		<br>
+        </p>
+        <p style="margin-bottom: 0">
+			<span class="label metro-stop" style="margin-right:10px;">Taxi and Uber</span><br><br>           
+			If you’re arriving with a group of three or more people, it may be more cost-effective to take a taxi or Uber. A ride from the airport to the city normally costs between 50 AUD and 65 AUD depending on the time of day.
+        </p>
+
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-xs-12">
+        <h2>General Travel Information</h2>
+        <ul class="ul">
+            <li>
+               Public transport within Melbourne is run by <a href="https://www.ptv.vic.gov.au/getting-around/visiting-melbourne/" target="_blank">PTV.</a> Travel on trains, trams, and buses in the city require the use of a myki card.
+            </li>
+            <li>
+                There is also an extensive <a href="https://static.ptv.vic.gov.au/siteassets/PDFs/Maps/Network-maps/PTV_FreeTramZone_Map.pdf" target="_blank">free tram zone</a> within the Melbourne CBD, which does not require a myki card.
+            </li>
+            <li>
+                The Melbourne Convention and Exhibition Centre tram stop (Stop 124A Casino/MCEC) is located one stop outside this free zone from the direction of the city.
+            </li>
+        </ul>
+        <br>
+     </div>
+</div>
+<div class="row">
+   <div class="col-xs-12">
+      <h2>Visa Information</h2>
+      <ul class="ul">
+         <li>For information regarding visas please refer to <a target="_blank" href="https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-finder">The Department of Home Affairs.</a></li>
+      </ul>
+      <br>
+   </div>
+</div>
+<br>

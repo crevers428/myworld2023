@@ -1,0 +1,52 @@
+        <div class="row">
+            <div class="col-md-12">
+
+                <h2 class="text-info" style="margin-bottom: 20px;">Competiciones</h2>
+                <button class="btn btn-success" onclick="document.location='{{link}}admin/competiciones/nueva'"><span class="glyphicon glyphicon-plus"></span> Nueva Competición...</button><br>
+                <br>
+
+                {{IF(table)}}
+
+                <div class="table-responsive">
+                    <table class="table table-condensed">
+                    {{FOR(table)}}
+                        <tr>
+                            <td>{{fecha_comienzo}}</td>
+                            <td>{{lugar}}</td>
+                            <td><a href="{{link}}c/{{id}}"><b>{{nombre}}</b></a></td>
+                            <td>&nbsp;
+                                <button class="btn btn-info btn-xs" onclick="document.location='{{link}}admin/competiciones/editar/{{id}}'">
+                                    <span class="glyphicon glyphicon-pencil"></span> Editar
+                                </button>
+                                &nbsp;
+                            </td>
+                            <td>{{IF(notificada<1)}}&nbsp;
+                                <button class="btn btn-warning btn-xs" onclick="document.location='{{link}}admin/competiciones/notificar/{{id}}'">
+                                    <span class="glyphicon glyphicon-envelope"></span> Notificar
+                                </button>
+                                &nbsp;{{ENDIF()}}
+                            </td>
+                            <td>&nbsp;
+                                <button class="btn btn-danger btn-xs" onclick="document.location='{{link}}admin/competiciones/eliminar/{{id}}'">
+                                    <span class="glyphicon glyphicon-remove"></span> Eliminar
+                                </button>
+                                &nbsp;
+                            </td>
+                        </tr>
+                    {{ENDFOR()}}
+                    </table>
+                </div>
+
+                {{ELSE()}}
+
+                <p>
+                    No hay competiciones
+                </p>
+
+                {{ENDIF()}}
+
+            <br>
+                <button class="btn btn-sm btn-default" onclick="document.location='{{link}}panel'"><span class="glyphicon glyphicon-home"></span> Mi Panel</button><br>
+
+            </div>
+        </div>

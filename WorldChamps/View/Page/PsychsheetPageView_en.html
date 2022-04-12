@@ -1,0 +1,55 @@
+<div class="row">
+
+    <div class="col-xs-12">
+        <h2 class="page-title"><span class="cubing-icon icon-{{eventId}}"></span> Psych Sheet for {{eventName}}</h2>
+        <h4><a href="{{link}}{{version-language}}/competitors/byname"><span class="glyphicon glyphicon-chevron-left"></span> Back to the competitors list</a></h4>
+
+        {{IF(competitors)}}
+        <div class="table-responsive">
+
+            <table class="table table-condensed">
+
+                <thead>
+                <tr>
+
+                    <th class="r">#</th>
+                    <th>Name</th>
+                    <th>Country</th>
+                    <th class="r">{{name1}}</th>
+                    <th class="r" title="World Ranking">WR</th>
+                    {{IF(name2)}}
+                    <th class="r">{{name2}}</th>
+                    <th class="r" title="World Ranking">WR</th>
+                    {{ENDIF()}}
+
+                </tr>
+                </thead>
+
+                <tbody>
+                {{FOR(competitors)}}
+                <tr>
+                    <td class="r">{{position}}</td>
+                    <td>{{IF(wca_id)}}<a href="https://www.worldcubeassociation.org/persons/{{wca_id}}" target="_blank">{{name}}</a>{{ELSE()}}{{name}}{{ENDIF()}}</td>
+                    <td>{{country}}</td>
+                    <td class="r"><strong>{{t1}}</strong></td>
+                    <td class="r"><strong>{{r1}}</strong></td>
+                    {{IF(t2)}}
+                    <td class="r">{{t2}}</td>
+                    <td class="r">{{r2}}</td>
+                    {{ENDIF()}}
+                </tr>
+                {{ENDFOR()}}
+                </tbody>
+
+            </table>
+
+        </div>
+        {{ELSE()}}
+        <p>
+            No competitors registered so far...
+        </p>
+        {{ENDIF()}}
+
+    </div>
+
+</div>

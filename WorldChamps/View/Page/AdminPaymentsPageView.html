@@ -1,0 +1,120 @@
+        <div class="row">
+            <div class="col-md-12">
+
+                <h2 class="page-title">Payments</h2>
+
+                <h3>Total = {{check_total}}</h3>
+
+                {{IF(payments)}}
+                <h3>Registration payments</h3>
+                <div class="table-responsive">
+
+                    <table class="table">
+
+                        <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th class="r">Amount paid</th>
+                            <th class="r">Amount used</th>
+                            <th class="r">Credit</th>
+                            <th class="r">Payment history</th>
+                            <th class="r">Credit history</th>
+                            <th class="r">Commission history</th>
+                        </tr>
+                        </thead>
+
+                        <tbody>
+                        {{FOR(payments)}}
+                        <tr{{IF(error)}} class="payment-error"{{ENDIF()}}>
+                            <td>{{name}} <a href="mailto:{{email}}"><span class="glyphicon glyphicon-envelope"></span></a></td>
+                            <td class="r">{{amount_paid}}</td>
+                            <td class="r">{{amount_used}}</td>
+                            <td class="r">{{credit}}</td>
+                            <td class="r">{{history_paid}}</td>
+                            <td class="r">{{history_credit}}</td>
+                            <td class="r">{{history_commission}}</td>
+                        </tr>
+                        {{ENDFOR()}}
+                        <tr>
+                            {{FOR(totals)}}<td class="r">{{count}}</td>{{ENDFOR()}}
+                        </tr>
+                        </tbody>
+
+                    </table>
+
+                </div>
+                {{ELSE()}}
+                <p>
+                    There are currently no registration payments
+                </p>
+                {{ENDIF()}}
+
+                {{IF(tickets)}}
+                <h3>Guest ticket payments</h3>
+                <div class="table-responsive">
+
+                    <table class="table">
+
+                        <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th class="r">Thursday, 11</th>
+                            <th class="r">Friday, 12</th>
+                            <th class="r">Saturday, 13</th>
+                            <th class="r">Sunday, 14</th>
+                            <th class="r">All days</th>
+                            <th class="r">Amount</th>
+                        </tr>
+                        </thead>
+
+                        <tbody>
+                        {{FOR(tickets)}}
+                        <tr{{IF(error)}} class="payment-error"{{ENDIF()}}>
+                        <td>{{name}} <a href="mailto:{{email}}"><span class="glyphicon glyphicon-envelope"></span></a></td>
+                        <td class="r">{{d19}}</td>
+                        <td class="r">{{d20}}</td>
+                        <td class="r">{{d21}}</td>
+                        <td class="r">{{d22}}</td>
+                        <td class="r">{{all_days}}</td>
+                        <td class="r">{{amount}}</td>
+                        </tr>
+                        {{ENDFOR()}}
+                        <tr>
+                            {{FOR(tickets_totals)}}
+                            <td class="r">{{counter}}</td>
+                            <td class="r">{{d19}}</td>
+                            <td class="r">{{d20}}</td>
+                            <td class="r">{{d21}}</td>
+                            <td class="r">{{d22}}</td>
+                            <td class="r">{{all_days}}</td>
+                            <td class="r">{{amount}}</td>
+                            {{ENDFOR()}}
+                        </tr>
+                        <tr>
+                            <td class="r">Total turnout</td>
+                            {{FOR(turnout)}}
+                            <td class="r">{{d19}}</td>
+                            <td class="r">{{d20}}</td>
+                            <td class="r">{{d21}}</td>
+                            <td class="r">{{d22}}</td>
+                            {{ENDFOR()}}
+                            <td colspan="2"></td>
+                        </tr>
+                        </tbody>
+
+                    </table>
+
+                </div>
+                {{ELSE()}}
+                <p>
+                    There are currently no guest ticket payments
+                </p>
+                {{ENDIF()}}
+
+                <a class="btn btn-default" href="{{link}}{{version-language}}/admin">
+                    <span class="glyphicon glyphicon-home"></span> Admin
+                </a>
+
+            </div>
+        </div>
+        <br>

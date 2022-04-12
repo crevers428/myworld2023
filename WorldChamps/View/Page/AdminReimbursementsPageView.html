@@ -1,0 +1,88 @@
+<div class="row">
+    <div class="col-md-12">
+
+        <h2 class="page-title">Reimbursements</h2>
+
+        {{IF(dues)}}
+        <div class="table-responsive">
+
+            <table class="table">
+
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th class="c">Staff</th>
+                    <th class="r">Amount paid</th>
+                    <th class="r">Amount used</th>
+                    <th class="r">Difference</th>
+                    <th class="r">Base</th>
+                    <th class="r">Refund</th>
+                    <th></th>
+                </tr>
+                </thead>
+
+                <tbody>
+                {{FOR(dues)}}
+                <tr>
+                    <td>{{name}}</td>
+                    <td class="c">{{staff}}</td>
+                    <td class="r">{{amount_paid}}</td>
+                    <td class="r">{{amount_used}}</td>
+                    <td class="r">{{difference}}</td>
+                    <td class="r">{{base}}</td>
+                    <td class="r">{{refund}}</td>
+                    <td><button class="btn btn-xs btn-danger" onclick="clickRefund({{id}},'{{escaped_name}}',{{refund}});">refund</button></td>
+                </tr>
+                {{ENDFOR()}}
+                <tr>
+                    <th>{{count}}</th>
+                    <th></th>
+                    <th class="r">{{total_paid}}</th>
+                    <th class="r">{{total_used}}</th>
+                    <th class="r">{{total_difference}}</th>
+                    <th></th>
+                    <th class="r">{{total_refund}}</th>
+                    <th></th>
+                </tr>
+                </tbody>
+
+            </table>
+
+        </div>
+        {{ELSE()}}
+        <p>
+            No money is currently owed...
+        </p>
+        {{ENDIF()}}
+
+        <a class="btn btn-default" href="{{link}}{{version-language}}/admin">
+            <span class="glyphicon glyphicon-home"></span> Admin
+        </a>
+
+    </div>
+</div>
+<br>
+
+<script>
+
+    function clickRefund(user_id,user_name,refund)
+    {
+        if (confirm('Are you sure you want to refund '+refund+' AUD to '+user_name+'?')) {
+            $.ajax({
+                method: "POST",
+                url: "{{link}}{{version-language}}/ajax/refund",
+                data: {
+                    user_id: user_id,
+                    refund: refund
+                }
+            })
+            .done(function( msg ) {
+                msg = msg.trim();
+                alert(msg);
+                if (msg.substring(0,5)!='ERROR') {
+                    window.location.reload();
+                }
+            });
+        }
+    }
+</script>

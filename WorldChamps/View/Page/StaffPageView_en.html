@@ -1,0 +1,379 @@
+{{IF(can_vote)}}
+<div class="row">
+    <div class="col-xs-12">
+        <h2 class="page-title">Evaluation of candidates to Staff</h2>
+        {{IF(candidates)}}
+        <p>
+            You have privileged access to this page because you are a WCA Delegate. Please vote on
+            the candidates below that you know and help us make a decision about accepting them as staff members.
+            <table class="table staff-vote-table">
+                <thead>
+                <tr>
+{{IF(auth_role>1)}}
+					<th><input type="checkbox" onclick="toggle_checks('unaccepted')" id="toggle_unaccepted"> Email</th>
+{{ENDIF()}}
+                    {{IF(order=votes)}}
+                    <th>Good <span class="glyphicon glyphicon-menu-down"></span></th>
+                    {{ELSE()}}
+                    <th><a class="sorting-link" href="{{link}}{{version-language}}/staff/byvotes" title="sort by votes">Good</a></th>
+                    {{ENDIF()}}
+                    <th>Bad</th>
+                    {{IF(order=name)}}
+                    <th>Name <span class="glyphicon glyphicon-menu-down"></span></th>
+                    {{ELSE()}}
+                    <th><a class="sorting-link" href="{{link}}{{version-language}}/staff/byname" title="sort by name">Name</a></th>
+                    {{ENDIF()}}
+                    {{IF(order=country)}}
+                    <th>Country <span class="glyphicon glyphicon-menu-down"></span></th>
+                    {{ELSE()}}
+                    <th><a class="sorting-link" href="{{link}}{{version-language}}/staff/bycountry" title="sort by country">Country</a></th>
+                    {{ENDIF()}}
+                    <th></th>
+                    <th>Compete at</th>
+                    <th>Scramble</th>
+                    <th>Don't like</th>
+                    <th>Warm up</th>
+                    <th title="Score-taking">S</th>
+                    <th title="Check-in">C</th>
+                    <th title="WCA booth">B</th>
+                    <th>Days</th>
+                    {{IF(auth_role>1)}}
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    {{ENDIF()}}
+                </tr>
+                </thead>
+                <tbody>
+                {{FOR(candidates)}}
+                <tr{{IF(role)}} style="background-color:#fff4f4"{{ENDIF()}}>
+{{IF(auth_role>1)}}
+					<td>
+						<input type="checkbox" name="{{email}}" class="box_unaccepted">
+					</td>
+{{ENDIF()}}
+                    <td>
+                        <span
+                            id="good_btn_{{candidate_id}}"
+                            class="glyphicon glyphicon-thumbs-up voter"
+                            onclick="vote(1,{{candidate_id}});"
+                            {{IF(my_good_vote)}}style="color:green"{{ENDIF()}}
+                        >
+                        </span>
+                        {{IF(auth_role>1)}}
+                        <span
+                            id="good_voters_{{candidate_id}}"
+                            title="Voters"
+                            data-toggle="popover"
+                            data-trigger="hover"
+                            data-content="{{good_voters_str}}">
+                            ( <span class="glyphicon glyphicon-user"></span> <span id="good_count_{{candidate_id}}">{{good_voters_count}}</span> )
+                        </span>
+                        {{ENDIF()}}
+                    </td>
+                    <td>
+                        <span
+                            id="bad_btn_{{candidate_id}}"
+                            class="glyphicon glyphicon-thumbs-down voter"
+                            onclick="vote(0,{{candidate_id}});"
+                            {{IF(my_bad_vote)}}style="color:red"{{ENDIF()}}
+                        >
+                        </span>
+                        {{IF(auth_role>1)}}
+                        <span
+                            id="bad_voters_{{candidate_id}}"
+                            title="Voters"
+                            data-toggle="popover"
+                            data-trigger="hover"
+                            data-content="{{bad_voters_str}}">
+                            ( <span class="glyphicon glyphicon-user"></span> <span id="bad_count_{{candidate_id}}">{{bad_voters_count}}</span> )
+                        </span>
+                        {{ENDIF()}}
+                    </td>
+                    <td>{{name}}</td>
+                    <td>{{country}}</td>
+                    <td><div class="label label-default" data-toggle="popover" data-trigger="hover" data-content="{{introduction}}">intro</div></td>
+                    <td>{{signed_up_icons|raw}}</td>
+                    <td>{{scramble_icons|raw}}</td>
+                    <td>{{no_scramble_icons|raw}}</td>
+                    <td>{{warm_up_icons|raw}}</td>
+                    {{IF(score_taking)}}<td title="Score-taking">S</td>{{ELSE()}}<td></td>{{ENDIF()}}
+                    {{IF(check_in)}}<td title="Check-in">C</td>{{ELSE()}}<td></td>{{ENDIF()}}
+                    {{IF(wca_booth)}}<td title="WCA booth">B</td>{{ELSE()}}<td></td>{{ENDIF()}}
+                    <td>{{days|raw}}</td>
+                    {{IF(auth_role>1)}}
+                    <td><button class="btn btn-xs btn-success" onclick="clickAddStaff({{candidate_id}},'{{email}}');">accept</button></td>
+                    <td><button class="btn btn-xs btn-danger" onclick="clickEraseStaff({{candidate_id}},'{{email}}');">erase</button></td>
+                    {{ENDIF()}}
+                </tr>
+                {{ENDFOR()}}
+                <tr>
+                    {{IF(auth_role>1)}}
+                    <td colspan="12"><strong>{{candidates_count}} PEOPLE</strong></td>
+                    {{ELSE()}}
+                    <td colspan="10"><strong>{{candidates_count}} PEOPLE</strong></td>
+                    {{ENDIF()}}
+                </tr>
+                </tbody>
+            </table>
+        </p>
+        {{ELSE()}}
+        <p>
+            We don't have candidates to Staff.
+        </p>
+        {{ENDIF()}}
+    </div>
+</div>
+{{ENDIF()}}
+
+<div class="row">
+    <div class="col-xs-12">
+        <h2 class="page-title">Competition Staff</h2>
+        {{IF(staff)}}
+        <p>
+            All these people will work hard the competition days to guarantee you have the best experience possible:
+            <table class="table">
+                <thead>
+                    <tr>
+{{IF(auth_role>1)}}
+                        <th><input type="checkbox" onclick="toggle_checks('accepted')" id="toggle_accepted"> Email</th>
+{{ENDIF()}}
+						{{IF(order=name)}}
+                        <th>Name <span class="glyphicon glyphicon-menu-down"></span></th>
+                        {{ELSE()}}
+                        <th><a class="sorting-link" href="{{link}}{{version-language}}/staff/byname" title="sort by name">Name</a></th>
+                        {{ENDIF()}}
+                        {{IF(order=country)}}
+                        <th>Country <span class="glyphicon glyphicon-menu-down"></span></th>
+                        {{ELSE()}}
+                        <th><a class="sorting-link" href="{{link}}{{version-language}}/staff/bycountry" title="sort by country">Country</a></th>
+                        {{ENDIF()}}
+                        {{IF(can_vote)}}
+                        <th></th>
+                        <th>Compete at</th>
+                        <th>Scramble</th>
+                        <th>Don't like</th>
+                        <th>Warm up</th>
+                        <th title="Score-taking">S</th>
+                        <th title="Check-in">C</th>
+                        <th title="WCA booth">B</th>
+                        <th>Days</th>
+                        {{IF(auth_role>1)}}
+                        <th></th>
+                        <th></th>
+                        {{ENDIF()}}
+                        {{ENDIF()}}
+                    </tr>
+                </thead>
+                <tbody>
+                    {{IF(can_vote)}}
+                        {{FOR(staff)}}
+                        <tr>
+
+{{IF(auth_role>1)}}
+                            <td>
+								<input type="checkbox" name="{{email}}" class="box_accepted">
+							</td>
+
+{{ENDIF()}}
+							<td>{{name}}</td>
+                            <td>{{country}}</td>
+                            <td><div class="label label-default" data-toggle="popover" data-trigger="hover" data-content="{{introduction}}">intro</div></td>
+                            <td>{{signed_up_icons|raw}}</td>
+                            <td>{{scramble_icons|raw}}</td>
+                            <td>{{no_scramble_icons|raw}}</td>
+                            <td>{{warm_up_icons|raw}}</td>
+                            {{IF(score_taking)}}<td title="Score-taking">S</td>{{ELSE()}}<td></td>{{ENDIF()}}
+                            {{IF(check_in)}}<td title="Check-in">C</td>{{ELSE()}}<td></td>{{ENDIF()}}
+                            {{IF(wca_booth)}}<td title="WCA booth">B</td>{{ELSE()}}<td></td>{{ENDIF()}}
+                            <td>{{days|raw}}</td>
+                            {{IF(auth_role>1)}}
+                            <td><button class="btn btn-xs btn-danger" onclick="clickRemoveStaff({{candidate_id}},'{{email}}');">remove</button></td>
+                            {{ENDIF()}}
+                        </tr>
+                        {{ENDFOR()}}
+                    {{ELSE()}}
+                        {{FOR(staff)}}
+                        <tr>
+                            <td>{{name}}</td>
+                            <td>{{country}}</td>
+                        </tr>
+                        {{ENDFOR()}}
+                    {{ENDIF()}}
+                    <tr>
+                        {{IF(can_vote)}}
+                        {{IF(auth_role>1)}}
+                        <td colspan="10"><strong>{{staff_count}} PEOPLE</strong></td>
+                        {{ELSE()}}
+                        <td colspan="8"><strong>{{staff_count}} PEOPLE</strong></td>
+                        {{ENDIF()}}
+                        {{ELSE()}}
+                        <td colspan="2"><strong>{{staff_count}} PEOPLE</strong></td>
+                        {{ENDIF()}}
+                    </tr>
+                </tbody>
+            </table>
+        </p>
+        {{ELSE()}}
+        <p>
+            There's no staff approved yet
+        </p>
+        {{ENDIF()}}
+    </div>
+</div>
+
+{{IF(auth_role>1)}}
+<div class="row">
+    <div class="col-xs-12">
+        <h2 class="page-title">Contact Staff</h2>
+    </div>
+    <div class="col-xs-12">
+        <p>
+            Click <a onclick="copy()">here</a> to copy a string of the selected e-mails to your clipboard.
+        </p>
+		<span id="copy"></span>
+    </div>
+</div>
+{{ENDIF()}}
+
+<script>
+
+function toggle_checks(accepted)
+{
+	var check = document.getElementById("toggle_" + accepted).checked;
+	var boxes = document.getElementsByClassName("box_" + accepted);
+	for (i = 0; i < boxes.length; i++) {
+		boxes[i].checked = check;
+	}
+}
+
+function copy()
+{
+	var email_string = "";
+		
+	var boxes0 = document.getElementsByClassName("box_unaccepted");
+	var boxes1 = document.getElementsByClassName("box_accepted");
+		
+	for (i = 0; i < boxes0.length; i++) {
+		if (boxes0[i].checked) {
+			email_string = email_string + boxes0[i].name + ",";
+		}
+	}
+			
+	for (i = 0; i < boxes1.length; i++) {
+		if (boxes1[i].checked) {
+			email_string = email_string + boxes1[i].name + ",";
+		}
+	}
+	
+	email_string = email_string.substring(0, email_string.length - 1);
+	
+	document.getElementById("copy").innerHTML = "<textarea id='copytext'>" + email_string + "</textarea>";
+	document.getElementById("copytext").select();
+	document.execCommand("copy");
+	document.getElementById("copy").innerHTML = "";
+}
+
+function vote(type,candidate_id)
+{
+    $.ajax({
+        method: "POST",
+        url: "{{link}}{{version-language}}/ajax/staff/vote",
+        data: { type: type, candidate_id: candidate_id }
+    })
+    .done(function( msg ) {
+        msg = msg.trim();
+        if (msg.substring(0,5)=='ERROR') {
+            alert(msg);
+        } else {
+            var vote = JSON.parse(msg);
+            var prefix, color, other_prefix;
+            if (type) {
+                prefix = "good_";
+                other_prefix = "bad_";
+                color = "green";
+            } else {
+                prefix = "bad_";
+                other_prefix = "good_";
+                color = "red";
+            }
+            if (vote.userVoted) {
+                $('#'+prefix+"btn_"+candidate_id).css( {color: color} );
+                $('#'+other_prefix+"btn_"+candidate_id).css( {color: "#cfcfcf"} );
+            } else {
+                $('#'+prefix+"btn_"+candidate_id).css( {color: "#cfcfcf"} );
+            }
+            $('#good_count_'+candidate_id).text(vote.good_votes);
+            $('#bad_count_'+candidate_id).text(vote.bad_votes);
+            if (!vote.good_voters_str) vote.good_voters_str = "None";
+            if (!vote.bad_voters_str) vote.bad_voters_str = "None";
+            $('#good_voters_'+candidate_id).attr('data-content',vote.good_voters_str);
+            $('#bad_voters_'+candidate_id).attr('data-content',vote.bad_voters_str);
+        }
+    });
+}
+
+{{IF(auth_role>1)}}
+function clickAddStaff(candidate_id,candidate_email)
+{
+    if (confirm('Sure you want to accept '+candidate_email+' as staff?')) {
+        $.ajax({
+            method: "POST",
+            url: "{{link}}{{version-language}}/ajax/staff/accept",
+            data: { candidate_id: candidate_id }
+        })
+        .done(function( msg ) {
+            msg = msg.trim();
+            if (msg.substring(0,5)=='ERROR') {
+                alert(msg);
+            } else {
+                window.location.reload();
+            }
+        });
+    }
+}
+
+function clickRemoveStaff(candidate_id,candidate_email)
+{
+    if (confirm('Sure you want to REMOVE '+candidate_email+' as staff?')) {
+        $.ajax({
+            method: "POST",
+            url: "{{link}}{{version-language}}/ajax/staff/remove",
+            data: { candidate_id: candidate_id }
+        })
+        .done(function( msg ) {
+            msg = msg.trim();
+            if (msg.substring(0,5)=='ERROR') {
+                alert(msg);
+            } else {
+                window.location.reload();
+            }
+        });
+    }
+}
+
+function clickEraseStaff(candidate_id,candidate_email)
+{
+    if (confirm('Sure you want to ERASE '+candidate_email+' from staff?')) {
+        $.ajax({
+            method: "POST",
+            url: "{{link}}{{version-language}}/ajax/staff/erase",
+            data: { candidate_id: candidate_id }
+        })
+                .done(function( msg ) {
+                    msg = msg.trim();
+                    if (msg.substring(0,5)=='ERROR') {
+                        alert(msg);
+                    } else {
+                        window.location.reload();
+                    }
+                });
+    }
+}
+{{ENDIF()}}
+
+$(document).ready(function(){
+    $('[data-toggle="popover"]').popover();
+});
+
+</script>

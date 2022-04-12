@@ -1,0 +1,883 @@
+<div class="row">
+    <div class="col-xs-12 col-md-3">
+        <h2 class="page-title">myWorlds</h2>
+        <p>
+            All the information you need, put together in one place.
+        </p>
+    </div>
+    <div class="col-xs-12 col-md-9">
+        <div class="row user-snapshot">
+
+            <div class="hidden-xs col-sm-9">
+                <img class="avatar-img" src="{{avatar}}" />
+                <p>
+                    <h3 class="max-stroke">{{name}}</h3>
+                    {{IF(wca_id)}}<a href="https://www.worldcubeassociation.org/persons/{{wca_id}}" target="_blank">{{wca_id}}</a><br />{{ENDIF()}}
+                    {{IF(delegate)}}<strong>WCA Delegate</strong><br />{{ENDIF()}}
+                    {{email}}<br />
+                    {{country}}
+                </p>
+            </div>
+            <div class="hidden-xs col-sm-3">
+                <br />
+                <div class="user-figures">
+                    <span>{{amount_paid}}&nbsp;AUD</span> paid
+                </div>
+                <div class="user-figures">
+                    <span>{{amount_used}}&nbsp;AUD</span> used
+                </div>
+                <div class="user-figures">
+                    credit <span class="text-success">{{balance}}&nbsp;AUD</span>
+                </div>
+            </div>
+
+            <div class="hidden-sm hidden-md hidden-lg col-xs-12 text-center">
+                <img class="avatar-img-xs" src="{{avatar}}" />
+                <p>
+                    <h3 class="max-stroke">{{name}}</h3>
+                    {{IF(wca_id)}}<a href="https://www.worldcubeassociation.org/persons/{{wca_id}}" target="_blank">{{wca_id}}</a><br />{{ENDIF()}}
+                    {{IF(delegate)}}<strong>WCA Delegate</strong><br />{{ENDIF()}}
+                    {{email}}<br />
+                    {{country}}
+                </p>
+            </div>
+            <div class="hidden-sm hidden-md hidden-lg col-xs-12">
+                <div class="user-figures">
+                    <span>{{amount_paid}}&nbsp;AUD</span> paid
+                </div>
+                <div class="user-figures">
+                    <span>{{amount_used}}&nbsp;AUD</span> used
+                </div>
+                <div class="user-figures">
+                    credit <span class="text-success">{{balance}}&nbsp;AUD</span>
+                </div>
+                <br />
+            </div>
+
+        </div>
+    </div>
+</div>
+
+{{IF(staff_approved)}}
+<div class="row bg-success">
+    <div class="col-xs-12">
+        <h3 class="page-title">My schedule</h3>
+        <p>
+            You can check your <button class="btn btn-default" onclick="$('#slider-sch').slideToggle(400,calendarToggled);">schedule</button> now.
+            For the moment it's a provisional schedule, so come back in a few days to check your final schedule.
+            It includes your competition frames and your staff duties as well.
+        </p>
+        <div class="slider" id="slider-sch">
+            <script src="{{file}}js/fullcalendar.min.js"></script>
+            <div id='calendar'></div>
+            <br>
+            <p>
+                You don't need to print out your schedule - you will be given a copy at the check-in.
+            </p>
+        </div>
+    </div>
+</div>
+{{ELSE()}}
+<div class="row" id="registration_row">
+    <div class="col-xs-12">
+        <h3 class="page-title" id="registration_title">Registration</h3>
+        <p>
+            {{IF(not_yet_open)}}
+            The registration will open on {{next_change_datetime}}. Come back by then!
+            {{ELSE()}}
+                {{IF(closed)}}
+                The registration is closed, we're sorry!
+                {{ELSE()}}
+                    {{IF(signed_up_to_something)}}
+                        {{IF(next_change_is_closure)}}
+                        The registration will close on {{next_change_datetime}}. You still can <button class="btn btn-default" onclick="$('#slider-reg').slideToggle();">modify</button> your registration. No change will be accepted after that moment.
+                        {{ELSE()}}
+                        The fees will be increased on {{next_change_datetime}} AEDT (UTC+11:00). You still can <button class="btn btn-default" onclick="$('#slider-reg').slideToggle();">modify</button> your registration!
+                        {{ENDIF()}}
+                    {{ELSE()}}
+                        {{IF(next_change_is_closure)}}
+                        The registration will close on {{next_change_datetime}}. <button class="btn btn-default" onclick="$('#slider-reg').slideToggle();">Sign up</button> now! No change will be accepted after that moment.
+                        {{ELSE()}}
+                        The fees will be increased on {{next_change_datetime}}. <button class="btn btn-default" onclick="$('#slider-reg').slideToggle();">Sign up</button> for your events soon!
+                        {{ENDIF()}}
+                    {{ENDIF()}}
+                {{ENDIF()}}
+            {{ENDIF()}}
+        </p>
+        <div class="slider" id="slider-reg">
+            {{IF(open)}}
+            <p>
+                Click an event row in the table below to add the event or to remove it from your registration.
+                Added events are marked green, removed events are marked red. When you're done, hit "checkout".
+            </p>
+            {{ENDIF()}}
+            <div class="row">
+                <div class="col-xs-12 col-md-8 container-fluid">
+                    <table class="table" id="registration_table">
+                        <thead>
+                        <tr>
+                            <th>Event</th>
+                            <th class="text-right">Paid by me</th>
+                            <th class="text-right">Fee</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+					<p>In which country do you currently reside (if Australia please select your state)?</p>
+					<select id="residency"></select>
+                </div>
+                <div class="col-xs-12 col-md-4">
+
+                    <table class="table" id="registration_total">
+                        <tbody>
+                            <tr>
+                                <td>FEES <span class="glyphicon glyphicon-info-sign" id="i-fees" data-toggle="popover" data-trigger="hover" data-content="Sum of all selected fees"></span></td>
+                                <td class="text-right max-stroke" id="fees_euros">0 AUD</td>
+                            </tr>
+                            <tr>
+                                <td class="no-border-top">CREDIT <span class="glyphicon glyphicon-info-sign" id="i-credit" data-toggle="popover" data-trigger="hover" data-content="Available credit used"></span></td>
+                                <td class="no-border-top text-right max-stroke" id="credit_euros">0 AUD</td>
+                            </tr>
+                            <tr>
+                                <td class="no-border-top">CHARGE <span class="glyphicon glyphicon-info-sign" id="i-commission" data-toggle="popover" data-trigger="hover" data-content="Free for the first payment, then {{commission}} AUD per additional payment"></span></td>
+                                <td class="no-border-top text-right max-stroke" id="commission_euros">0 AUD</td>
+                            </tr>
+                            <tr>
+                                <td>TOTAL</td>
+                                <td class="text-right max-stroke" id="total_euros">0 AUD</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" class="text-center no-border-top">
+                                    <form action="{{link}}{{version-language}}/payment" method="post" onsubmit="return submitPayment();" id="payment_form">
+                                        <button id="checkout_btn" class="btn btn-primary disabled" type="submit">checkout</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    {{IF(payments)}}
+                    <h3>All my transactions</h3>
+                    <div class="payments-table-container">
+                        <table class="table" id="payments-table">
+                            <thead>
+                            <tr>
+                                <th>PAID TOTALS</th>
+                                <th></th>
+                                <th class="text-right">{{paid_totals}}</th>
+                                <th class="text-right">{{comm_totals}}</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {{FOR(payments)}}
+                            <tr>
+                                <td>{{created}}</td>
+                                <td class="text-center">{{IF(id)}}
+                                        {{IF(type=paym)}}<span data-toggle="tooltip" title="real payment">paid</span>
+                                        {{ELSE()}}<span data-toggle="tooltip" title="compensated with your credit">credit</span>{{ENDIF()}}
+                                    {{ENDIF()}}
+                                </td>
+                                <td class="text-right">{{IF(type=comp)}}({{ENDIF()}}{{amount|raw}}{{IF(type=comp)}}){{ENDIF()}}</td>
+                                <td class="text-right">{{our_commission}}</td>
+                            </tr>
+                            {{ENDFOR()}}
+                            </tbody>
+                        </table>
+                    </div>
+                    {{ENDIF()}}
+                    <h3>Policies</h3>
+                    <div class="bg-warning">
+                        <ul>
+                            <li>
+                                Your registration will not be complete until you pay and you see yourself in
+                                the <a href="{{link}}{{version-language}}/competitors">Competitors</a> page.
+                                The registration is immediate after payment.
+                            </li>
+                            <li>
+                                All the transactions are done through Stripe. All payments are secure. We never see
+                                your credit card details.
+                            </li>
+                            <li>
+                                You can change your registration as many times as you like. But you should know that:
+                                <ul>
+                                    <li>
+                                        Only the first time you pay you will not have a payment charge.
+                                    </li>
+                                    <li>
+                                        If the new registration is cheaper than the previous one, you
+                                        will not be reimbursed immediately. Instead, you will receive credit.
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                After the registration closes, credits that have not been used will be
+                                reimbursed:
+                                <ul>
+                                    <li>
+                                        Except the base fee and the payment charges, which will not
+                                        be reimbursed.
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{ENDIF()}}
+
+<div class="row bg-warning">
+    <div class="col-xs-12">
+        {{IF(signed_up_to_something)}}
+        {{IF(has_tickets)}}
+        <h3 class="page-title">Get more companion tickets</h3>
+        <p>
+            Your companion tickets are already booked.
+            You can <button class="btn btn-default" onclick="$('#slider-tickets').slideToggle();">buy</button> more if you want.
+        </p>
+        {{ELSE()}}
+        <!--<h3 class="page-title">Get your companion tickets</h3>-->
+	<h3 class="page-title">Companion tickets will be available through MyWorlds from {{next_change_datetime}} AEDT (UTC+11:00)!</h3>
+        <!--<p>
+            You can now <button class="btn btn-default" onclick="$('#slider-tickets').slideToggle();">buy</button> your companion tickets.
+        </p>-->
+        {{ENDIF()}}
+        <div class="slider" id="slider-tickets">
+            <ul class="ul">
+                <li>
+                    You will collect your tickets at the check-in. You will be asked to identify
+                    yourself with an <strong>ID document</strong> as "{{name}}".
+                </li>
+                <li>
+                    You can buy tickets for
+                    <strong>{{max_companions}} companions per day</strong> maximum.
+                    The cap is a guarantee that all the competitors can come with their companions.
+                    The cap could be raised in the future.
+                </li>
+                <li>
+                    <strong>The tickets are not reimbursable and each one of them can be
+                    transferred to a companion only</strong>.
+                </li>
+                <li>
+                    <strong>Children under 6 years old don't pay spectator entry</strong>,
+                    but they have to go to the box office for their tickets with you.
+                </li>
+                <li>
+                    There will be more tickets available at the beginning of the competition.
+                    Only cash will be accepted at the box office.
+                </li>
+            </ul>
+            <div class="row">
+                <div class="col-xs-6 col-sm-2 ticket-day" id="ticket-0">
+                    <div class="ticket-date">11</div>
+                    <div class="ticket-day-of-week">thursday</div>
+                    <div>({{one_day_fees}} AUD)</div>
+                    <div><span class="glyphicon glyphicon-triangle-top" onclick="clickTicketUp(0);"></span></div>
+                    <div><span class="ticket-number" id="ticket-qty-0">0</span><br>tickets</div>
+                    <div><span class="glyphicon glyphicon-triangle-bottom" onclick="clickTicketDown(0);"></span></div>
+                </div>
+                <div class="col-xs-6 col-sm-2 ticket-day" id="ticket-1">
+                    <div class="ticket-date">12</div>
+                    <div class="ticket-day-of-week">friday</div>
+                    <div>({{one_day_fees}} AUD)</div>
+                    <div><span class="glyphicon glyphicon-triangle-top" onclick="clickTicketUp(1);"></span></div>
+                    <div><span class="ticket-number" id="ticket-qty-1">0</span><br>tickets</div>
+                    <div><span class="glyphicon glyphicon-triangle-bottom" onclick="clickTicketDown(1);"></span></div>
+                </div>
+                <div class="col-xs-6 col-sm-2 ticket-day" id="ticket-2">
+                    <div class="ticket-date">13</div>
+                    <div class="ticket-day-of-week">saturday</div>
+                    <div>({{one_day_fees}} AUD)</div>
+                    <div><span class="glyphicon glyphicon-triangle-top" onclick="clickTicketUp(2);"></span></div>
+                    <div><span class="ticket-number" id="ticket-qty-2">0</span><br>tickets</div>
+                    <div><span class="glyphicon glyphicon-triangle-bottom" onclick="clickTicketDown(2);"></span></div>
+                </div>
+                <div class="col-xs-6 col-sm-2 ticket-day" id="ticket-3">
+                    <div class="ticket-date">14</div>
+                    <div class="ticket-day-of-week">sunday</div>
+                    <div>({{one_day_fees}} AUD)</div>
+                    <div><span class="glyphicon glyphicon-triangle-top" onclick="clickTicketUp(3);"></span></div>
+                    <div><span class="ticket-number" id="ticket-qty-3">0</span><br>tickets</div>
+                    <div><span class="glyphicon glyphicon-triangle-bottom" onclick="clickTicketDown(3);"></span></div>
+                </div>
+                <div class="col-xs-12 col-sm-2 ticket-day" id="ticket-4">
+                    <div class="ticket-date">ALL</div>
+                    <div class="ticket-day-of-week">4 days</div>
+                    <div>({{all_days_fees}} AUD)</div>
+                    <div><span class="glyphicon glyphicon-triangle-top" onclick="clickTicketUp(4);"></span></div>
+                    <div><span class="ticket-number" id="ticket-qty-4">0</span><br>tickets</div>
+                    <div><span class="glyphicon glyphicon-triangle-bottom" onclick="clickTicketDown(4);"></span></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <br>
+                    <form action="{{link}}{{version-language}}/buytickets" method="post" onsubmit="return submitBuyTickets();" id="tickets_form">
+                        <button id="buytickets_btn" class="btn btn-primary disabled" type="submit">select tickets to buy</button>
+                    </form>
+                    <br>
+                </div>
+            </div>
+        </div>
+        {{ELSE()}}
+        <h3 class="page-title">Companion tickets will be available through MyWorlds soon!</h3>
+        <!--<p>
+            Competitors can pre-order companion tickets.
+            To have access to acquire them, first you have to register to any competition event.
+	</p>-->
+        {{ENDIF()}}
+    </div>
+</div>
+
+{{IF(wca_id)}}
+<div class="row bg-info">
+    <div class="col-xs-12">
+        {{IF(staff_applied)}}
+        {{IF(staff_approved)}}
+        <h3 class="page-title">You are a Staff member!</h3>
+        <p>
+            Congratulations! You have been accepted as a Staff member for WCA World Championship 2019.
+        </p>
+        <button class="btn btn-default" onclick="$('#slider-staff').slideToggle();">I want to check my data</button>
+        <br /><br />
+        {{ELSE()}}
+        <h3 class="page-title">Thanks for applying to be a Staff member!</h3>
+        <p>
+            Your application is being reviewed. We will let you know if it has been accepted.
+        </p>
+        <button class="btn btn-default" onclick="$('#slider-staff').slideToggle();">I want to check my data</button>
+        <br /><br />
+        {{ENDIF()}}
+
+        <div class="slider" id="slider-staff">
+            <div class="alert alert-danger">You cannot modify the data of your application any more.</div>
+            <br>
+            <form onsubmit="return false;">
+                <div class="form-group">
+                    <label>Provide a brief introduction of yourself:</label>
+                    <textarea readonly class="form-control" id="input-introduction"
+                        placeholder="Tell us about the competitions you attended, organized or staffed...">{{staff_introduction}}</textarea>
+                </div>
+                <label>What puzzles are you good at scrambling?</label>
+                <div class="row" id="scramble-events">
+                </div>
+                <br>
+                <label>What puzzles do you not like to scramble?</label>
+                <div class="row" id="no-scramble-events">
+                </div>
+                <br>
+                {{IF(signed_up_to_something)}}
+                <label>What events would you like to have previous time to warm up for?</label>
+                <div class="row" id="warm-up-events">
+                </div>
+                <br>
+                {{ENDIF()}}
+                <label>Do you have experience with Cubecomps and with score-taking?</label>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <label class="checkbox-inline">
+                            <input type="checkbox" disabled id="score-taking"{{IF(score_taking)}} checked{{ENDIF()}}>
+                            I can do score-taking
+                        </label>
+                    </div>
+                </div>
+                <br>
+                <label>Can you help in the box office?</label>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <p>
+                            We need a team of people to run shifts the four competition days on the check-in
+                            of competitors and tickets sale. We will value the proficiency in English or Spanish.
+                        </p>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" disabled id="check-in"{{IF(check_in)}} checked{{ENDIF()}}>
+                            I can help in the box office
+                        </label>
+                    </div>
+                </div>
+                <br>
+                <label>Can you help with the WCA booth in the Fun Zone?</label>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <p>
+                            If talking to others about speedcubing is your passion, maybe you'll enjoy enrolling
+                            in the WCA booth.
+                        </p>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" disabled id="wca-booth"{{IF(wca_booth)}} checked{{ENDIF()}}>
+                            I can help in the WCA booth
+                        </label>
+                    </div>
+                </div>
+                <br>
+                <label>What is your T-shirt size?</label>
+                <p>
+                    In the check-in you will be given a Staff t-shirt per competition day that you help in.
+                    You must wear that t-shirt the days you help as Staff.
+                    The measure of the sizes is the same for men and women.
+                </p>
+                <div class="row">
+                    <div class="col-xs-3 col-sm-2 radio-t-shirt-size{{IF(t_shirt_size=XS)}} checked{{ENDIF()}}" id="size-xs">
+                        <div>XS</div>
+                    </div>
+                    <div class="col-xs-3 col-sm-2 radio-t-shirt-size{{IF(t_shirt_size=S)}} checked{{ENDIF()}}" id="size-s">
+                        <div>S</div>
+                    </div>
+                    <div class="col-xs-3 col-sm-2 radio-t-shirt-size{{IF(t_shirt_size=M)}} checked{{ENDIF()}}" id="size-m">
+                        <div>M</div>
+                    </div>
+                    <div class="col-xs-3 col-sm-2 radio-t-shirt-size{{IF(t_shirt_size=L)}} checked{{ENDIF()}}" id="size-l">
+                        <div>L</div>
+                    </div>
+                    <div class="col-xs-3 col-sm-2 radio-t-shirt-size{{IF(t_shirt_size=XL)}} checked{{ENDIF()}}" id="size-xl">
+                        <div>XL</div>
+                    </div>
+                    <div class="col-xs-3 col-sm-2 radio-t-shirt-size{{IF(t_shirt_size=XXL)}} checked{{ENDIF()}}" id="size-xxl">
+                        <div>XXL</div>
+                    </div>
+                </div>
+                <br>
+                <label>Which days can you help?</label>
+                <p>
+                    You must select at least one competition day. If you can also help
+                    us setting up on Wednesday, that would be appreciated. The more days you can help,
+                    the bigger chance you have to be accepted as Staff.
+                </p>
+                <div class="row days">
+                    <div class="col-xs-3 col-sm-2 cb-staff{{IF(day_18)}} checked{{ENDIF()}}" id="day-18">
+                        <div class="day">11</div>
+                        <div class="month">July</div>
+                        set-up (early morning Thursday)
+                    </div>
+                    <div class="col-xs-3 col-sm-2 cb-staff cb-comp-day{{IF(day_19)}} checked{{ENDIF()}}" id="day-19">
+                        <div class="day">11</div>
+                        <div class="month">July</div>
+                        Thursday
+                    </div>
+                    <div class="col-xs-3 col-sm-2 cb-staff cb-comp-day{{IF(day_20)}} checked{{ENDIF()}}" id="day-20">
+                        <div class="day">12</div>
+                        <div class="month">July</div>
+                        Friday
+                    </div>
+                    <div class="col-xs-3 col-sm-2 cb-staff cb-comp-day{{IF(day_21)}} checked{{ENDIF()}}" id="day-21">
+                        <div class="day">13</div>
+                        <div class="month">July</div>
+                        Saturday
+                    </div>
+                    <div class="col-xs-3 col-sm-2 cb-staff cb-comp-day{{IF(day_22)}} checked{{ENDIF()}}" id="day-22">
+                        <div class="day">14</div>
+                        <div class="month">July</div>
+                        Sunday
+                    </div>
+                </div>
+                <br>
+            </form>
+            <br>
+        </div>
+
+        {{ELSE()}}
+        {{ENDIF()}}
+
+        {{IF(delegate)}}
+        <h3>Delegates: Help us by voting for your trusted candidates to Staff</h3>
+        <p>
+            If you have a moment, we would appreciate if you could
+            <a href="{{link}}{{version-language}}/staff">evaluate the candidates to Staff</a>. Thanks!
+        </p>
+        {{ELSE()}}
+        <p>
+            Check the list of
+            <a href="{{link}}{{version-language}}/staff">Staff members</a>.
+        </p>
+        {{ENDIF()}}
+
+    </div>
+</div>
+{{ENDIF()}}
+
+<br />
+
+<script>
+
+    var myRegistration = JSON.parse('{{registration|raw}}');
+    var amount_paid = {{amount_paid}};
+    var amount_credit = {{balance}};
+    var commission_fee = {{commission}};
+    var signedUpCounter = 0;
+    var checkCounter = 0;
+    var paymentBalance = 0;
+    var grand_total = 0;
+    var user_events = {{user_events|raw}};
+	
+	var countries = ["Australia - New South Wales","Australia - Queensland","Australia - South Australia","Australia - Tasmania",
+		"Australia - Victoria","Australia - Western Australia","Australia - other territory","Afghanistan","Albania",
+		"Algeria","Andorra","Angola","Antigua and Barbuda","Argentina","Armenia","Austria","Azerbaijan","Bahamas",
+		"Bahrain","Bangladesh","Barbados","Belarus","Belgium","Belize","Benin","Bhutan","Bolivia","Bosnia and Herzegovina","Botswana","Brazil","Brunei","Bulgaria",
+		"Burkina Faso","Burundi","Cabo Verde","Cambodia","Cameroon","Canada","Central African Republic","Chad","Chile","China","Colombia","Comoros","Congo",
+		"Costa Rica","Côte d'Ivoire","Croatia","Cuba","Cyprus","Czech Republic","Democratic People’s Republic of Korea","Democratic Republic of the Congo",
+		"Denmark","Djibouti","Dominica","Dominican Republic","Ecuador","Egypt","El Salvador","Equatorial Guinea","Eritrea","Estonia","Ethiopia",
+		"Federated States of Micronesia","Fiji","Finland","France","Gabon","Gambia","Georgia","Germany","Ghana","Greece","Grenada","Guatemala","Guinea",
+		"Guinea Bissau","Guyana","Haiti","Holy See","Honduras","Hong Kong","Hungary","Iceland","India","Indonesia","Iran","Iraq","Ireland","Israel","Italy",
+		"Jamaica","Japan","Jordan","Kazakhstan","Kenya","Kiribati","Republic of Korea","Kosovo","Kuwait","Kyrgyzstan","Laos","Latvia","Lebanon","Lesotho","Liberia",
+		"Libya","Liechtenstein","Lithuania","Luxembourg","Macau","Macedonia","Madagascar","Malawi","Malaysia","Maldives","Mali","Malta","Marshall Islands",
+		"Mauritania","Mauritius","Mexico","Moldova","Monaco","Mongolia","Montenegro","Morocco","Mozambique","Myanmar","Namibia","Nauru","Nepal","Netherlands",
+		"New Zealand","Nicaragua","Niger","Nigeria","Norway","Oman","Pakistan","Palau","Palestine","Panama","Papua New Guinea","Paraguay","Peru","Philippines",
+		"Poland","Portugal","Qatar","Romania","Russia","Rwanda","Saint Kitts and Nevis","Saint Lucia","Saint Vincent and the Grenadines","Samoa","San Marino",
+		"São Tomé and Príncipe","Saudi Arabia","Senegal","Serbia","Seychelles","Sierra Leone","Singapore","Slovakia","Slovenia","Solomon Islands","Somalia",
+		"South Africa","South Sudan","Spain","Sri Lanka","Sudan","Suriname","Swaziland","Sweden","Switzerland","Syria","Taiwan","Tajikistan","Tanzania",
+		"Thailand","Timor-Leste","Togo","Tonga","Trinidad and Tobago","Tunisia","Turkey","Turkmenistan","Tuvalu","Uganda","Ukraine","United Arab Emirates",
+		"United Kingdom","Uruguay","United States","Uzbekistan","Vanuatu","Venezuela","Vietnam","Yemen","Zambia","Zimbabwe"];
+	
+	var residencies = "<option value='' selected='selected' disabled>Select</option>";
+	for (i = 0; i < countries.length; i++) {
+		residencies = residencies + "<option value='" + countries[i] + "'>" + countries[i] + "</option>"; 
+	}
+	
+	document.getElementById("residency").innerHTML = residencies;
+
+    function euro(v,forceZero)
+    {
+        if (!v && !forceZero) return "";
+        return v + " AUD";
+    }
+
+    function indexOfEvent(evtId)
+    {
+        var i = 0;
+        var len = myRegistration.events.length;
+        while (i < len && myRegistration.events[i].id != evtId) i++;
+        if (i < len) {
+            return i;
+        } else {
+            return -1;
+        }
+    }
+
+    function checkPaymentBalance(evtId)
+    {
+        var balance;
+        myRegistration.events[evtId].checked = !myRegistration.events[evtId].checked;
+        if (myRegistration.events[evtId].signed_up) {
+            balance = -myRegistration.events[evtId].paid_fee;
+            if (myRegistration.events[evtId].checked) {
+                $('#'+myRegistration.events[evtId].id).addClass('drop-event');
+            } else {
+                $('#'+myRegistration.events[evtId].id).removeClass('drop-event');
+            }
+        } else {
+            balance = myRegistration.events[evtId].price_now;
+            if (myRegistration.events[evtId].checked) {
+                $('#'+myRegistration.events[evtId].id).addClass('add-event');
+            } else {
+                $('#'+myRegistration.events[evtId].id).removeClass('add-event');
+            }
+        }
+        if (!myRegistration.events[evtId].checked) balance = -balance;
+        paymentBalance += parseFloat(balance);
+    }
+
+    function submitPayment()
+    {
+	
+		var residency = document.getElementById("residency").value;
+		if (residency == "") {
+			alert("Please select your country of residency.");
+			return false;
+		}
+		
+		myRegistration.residency = "^^" + residency;
+		
+        $('<input>', {
+            type: 'hidden',
+            name: 'total',
+            value: grand_total
+        }).appendTo('#payment_form');
+        $('<input>', {
+            type: 'hidden',
+            name: 'registration',
+            value: JSON.stringify(myRegistration)
+        }).appendTo('#payment_form');
+        return true;
+    }
+
+    function clickScrambleableEvent()
+    {
+        var caller_id = $(this).attr('id');
+        var checked = $(this).hasClass('checked');
+        if (checked) {
+            var suffix = caller_id.substr(4);
+            var other_id;
+            if (caller_id.substr(0,3) == 'cbs') {
+                other_id = 'cbn-'+suffix;
+            } else {
+                other_id = 'cbs-'+suffix;
+            }
+            $('#'+other_id).removeClass('checked');
+        }
+    }
+
+    function clickCompDay()
+    {
+        $('#btn-staff-apply').prop('disabled',!$('.cb-comp-day.checked').length);
+    }
+
+    var myTickets = {{tickets|raw}};
+    var moreTickets = [0,0,0,0,0];
+    var maxCompanions = {{max_companions}};
+    var oneDayFees = {{one_day_fees}};
+    var allDaysFees = {{all_days_fees}};
+    var ticketsTotal = 0;
+
+    function ticketError(pos,up)
+    {
+        var sign;
+        if (up) {
+            sign = '-';
+        } else {
+            sign = '+';
+        }
+        $('#ticket-'+pos).animate({ top: sign+'10px' },50,function() {
+            $(this).animate({ top: '0px' },50);
+        });
+    }
+
+    function clickTicketUp(pos)
+    {
+        var currentAllDays = myTickets[4]+moreTickets[4];
+        if (pos==4) {
+            if (currentAllDays < maxCompanions) {
+                var maximumReached = false;
+                for (var i=0; i < 4; i++) {
+                    if (myTickets[i]+moreTickets[i]+currentAllDays >= maxCompanions) {
+                        maximumReached = true;
+                        ticketError(i,true);
+                    }
+                }
+                if (!maximumReached) {
+                    moreTickets[4] = moreTickets[4] + 1;
+                    $('#ticket-qty-4').text(currentAllDays+1);
+                    updateTicketsTotal();
+                }
+            } else {
+                ticketError(4,true);
+            }
+        } else {
+            var currentQty = myTickets[pos]+moreTickets[pos];
+            if (currentAllDays+currentQty < maxCompanions) {
+                moreTickets[pos] = moreTickets[pos] + 1;
+                $('#ticket-qty-'+pos).text(currentQty+1);
+                updateTicketsTotal();
+            } else {
+                ticketError(pos,true);
+            }
+        }
+    }
+
+    function clickTicketDown(pos)
+    {
+        if (moreTickets[pos] > 0) {
+            moreTickets[pos] = moreTickets[pos] - 1;
+            $('#ticket-qty-'+pos).text(myTickets[pos]+moreTickets[pos]);
+            updateTicketsTotal();
+        } else {
+            ticketError(pos,false);
+        }
+    }
+
+    function updateTicketsTotal()
+    {
+        ticketsTotal = 0;
+        for (var i=0; i < 4; i++) {
+            ticketsTotal += moreTickets[i] * oneDayFees;
+        }
+        ticketsTotal += moreTickets[4] * allDaysFees;
+        if (!ticketsTotal) {
+            $('#buytickets_btn').text('select tickets to buy').addClass('disabled');
+        } else {
+            $('#buytickets_btn').text('buy tickets ('+ticketsTotal+' AUD)').removeClass('disabled');
+        }
+    }
+
+    function submitBuyTickets()
+    {
+        $('<input>', {
+            type: 'hidden',
+            name: 'total',
+            value: ticketsTotal
+        }).appendTo('#tickets_form');
+        $('<input>', {
+            type: 'hidden',
+            name: 'tickets',
+            value: JSON.stringify(moreTickets)
+        }).appendTo('#tickets_form');
+        return true;
+    }
+
+    var calendarRefreshed = false;
+
+    function calendarToggled()
+    {
+        if (!calendarRefreshed) {
+            $('#calendar').fullCalendar('rerenderEvents');
+            calendarRefreshed = true;
+        }
+    }
+
+    $(document).ready(function(){
+
+        if (myRegistration.not_yet_open) {
+            $("#registration_title").text("Registration is not yet open");
+            $("#registration_row").addClass("bg-danger");
+        } else if (myRegistration.open) {
+            $("#registration_title").text("Registration is open!");
+            $("#registration_row").addClass("bg-success");
+        } else {
+            $("#registration_title").text("Registration is closed");
+            $("#registration_row").addClass("bg-danger");
+        }
+        var table = $("#registration_table");
+        if (myRegistration.not_yet_open) {
+            table.remove();
+        } else {
+            var len = myRegistration.events.length;
+            for (var i = 0; i < len; i++) {
+                if (i && myRegistration.events[i].signed_up) signedUpCounter++;
+                table.append(
+                    "<tr class='"+(i?"selectable ":"")+(myRegistration.events[i].signed_up?"signed-up-event":"")+"' id='"+myRegistration.events[i].id+"'>" +
+                        "<td><span><b class='cubing-icon icon-"+myRegistration.events[i].id+"'></b> "+myRegistration.events[i].name+"</span></td>" +
+                        "<td class='text-right'><span>"+euro(myRegistration.events[i].paid_fee,false)+"</span></td>" +
+                        "<td class='text-right'><span>"+euro(myRegistration.events[i].price_now,false)+"</span></td>" +
+                    "</tr>"
+                );
+            }
+        }
+
+        $('.selectable').click(function() {
+            var e = indexOfEvent(this.id);
+            if (e >= 0) {
+                checkPaymentBalance(e);
+                if (myRegistration.events[e].checked) {
+                    checkCounter++;
+                } else {
+                    checkCounter--;
+                }
+                if (myRegistration.events[e].checked != myRegistration.events[e].signed_up) {
+                    signedUpCounter++;
+                } else {
+                    signedUpCounter--;
+                }
+                if (
+                    signedUpCounter && !myRegistration.events[0].signed_up && !myRegistration.events[0].checked ||
+                    !signedUpCounter && !myRegistration.events[0].signed_up && myRegistration.events[0].checked ||
+                    signedUpCounter && myRegistration.events[0].signed_up && myRegistration.events[0].checked ||
+                    !signedUpCounter && myRegistration.events[0].signed_up && !myRegistration.events[0].checked
+                ) {
+                    checkPaymentBalance(0);
+                }
+                $('#fees_euros').text(euro(paymentBalance,true));
+                var creditBalance = 0;
+                if (paymentBalance > 0) creditBalance = -Math.min(amount_credit,paymentBalance);
+                $('#credit_euros').text(euro(creditBalance,true));
+                var commission = (amount_paid /* not first timer */ && (paymentBalance + creditBalance > 0) ? commission_fee : 0);
+                $('#commission_euros').text(euro(commission,true));
+                grand_total = paymentBalance+creditBalance+commission;
+                $('#total_euros').text(euro(grand_total,true));
+                if (checkCounter) {
+                    $('#checkout_btn').removeClass('disabled');
+                } else {
+                    $('#checkout_btn').addClass('disabled');
+                }
+            }
+        });
+
+        // add user events
+        var scramble_events = $('#scramble-events');
+        var no_scramble_events = $('#no-scramble-events');
+        var warn_up_events = $('#warm-up-events');
+        for (var i = 0; i < user_events.length; i++) {
+            if (user_events[i].scrambleable) {
+                scramble_events.append(
+                        '<div class="col-xs-6 col-sm-4 col-md-2 cb-staff scrambleable'+(user_events[i].scramble ? ' checked' : '')+'" id="cbs-'+user_events[i].id+'">' +
+                                '<span class="cubing-icon icon-'+user_events[i].id+'"></span>' + user_events[i].name +
+                                '</div>'
+                );
+                no_scramble_events.append(
+                        '<div class="col-xs-6 col-sm-4 col-md-2 cb-staff scrambleable'+(user_events[i].no_scramble ? ' checked' : '')+'" id="cbn-'+user_events[i].id+'">' +
+                                '<span class="cubing-icon icon-'+user_events[i].id+'"></span>' + user_events[i].name +
+                                '</div>'
+                );
+            }
+            if (user_events[i].signed_up && user_events[i].warmable) {
+                warn_up_events.append(
+                    '<div class="col-xs-6 col-sm-4 col-md-2 cb-staff'+(user_events[i].warm_up ? ' checked' : '')+'" id="cbw-'+user_events[i].id+'">' +
+                        '<span class="cubing-icon icon-'+user_events[i].id+'"></span>' + user_events[i].name +
+                    '</div>'
+                );
+            }
+        }
+        $('.scrambleable').click(clickScrambleableEvent);
+        $('.cb-comp-day').click(clickCompDay);
+        clickCompDay();
+
+        $('[data-toggle="popover"]').popover();
+
+        // update tickets
+        for (var i=0; i <= 4; i++) {
+            $('#ticket-qty-'+i).text(myTickets[i]+moreTickets[i]);
+        }
+
+        // calendar
+        var calendar = $('#calendar');
+        if (calendar.length > 0) {
+
+            var mobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+            var defaultViewNav = mobile ? "agenda" : "agendaFourDay";
+            var viewAvail = mobile ? "agendaFourDay,agenda" : "listFourDay,agendaFourDay,agenda";
+
+            calendar.fullCalendar({
+                // see: https://fullcalendar.io/docs/views/Custom_Views/
+                views: {
+                    agendaFourDay: {
+                        type: 'agenda',
+                        duration: { days: 4 },
+                        buttonText: '4 Days',
+                    },
+                    listFourDay: {
+                        type: 'list',
+                        duration: { days: 4 },
+                        buttonText: 'List',
+                    },
+                    agenda: {
+                        buttonText: '1 Day',
+                    },
+                },
+                defaultView: defaultViewNav,
+                header: {
+                    left: '',
+                    center: viewAvail,
+                    right: 'prev,next',
+                },
+                defaultDate: '2018-07-19',
+                minTime:'08:00:00',
+                maxTime:'22:00:00',
+                aspectRatio: '0.75',
+                slotDuration: '00:15:00',
+                timeFormat: 'H:mm',
+                slotLabelFormat: 'H:mm',
+                events: 'https://wcaeuro2018.herokuapp.com/registrations/{{user_id}}/schedule.json',
+                eventRender: function(event, element) {
+                    if (event.staff_event) {
+                        element.addClass("staff_event");
+                    }
+                },
+            });
+        }
+
+    });
+
+</script>

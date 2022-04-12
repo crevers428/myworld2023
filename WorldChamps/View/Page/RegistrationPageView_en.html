@@ -1,0 +1,31 @@
+<div class="row">
+    <div class="col-xs-12">
+        <h2 class="page-title">Registration</h2>
+        <div class="alert alert-success" role="alert">
+	<p>	
+	In order for you to manage your registration and everything related to <strong>Rubik's presents WCA World Championship 2019</strong>, we have prepared a personal page for you: <strong>myWorlds</strong>! The access to this section of our website is a bit special. So, if you are ready to join Rubik's presents WCA World Championship 2019, click the button below:
+        </p>
+        </div>
+	<a href="{{link}}{{version-language}}/myworlds/access/" class="btn btn-primary">Learn more about <strong>myWorlds</strong>!</a>
+        <h2>Registration fees</h2>
+		<p><strong>Please note that all prices are in AUD (Australian Dollars)</strong></p>
+        <table class="table staff-vote-table">
+            <thead>
+                <tr>
+                    <th>Event</th>
+                    {{FOR(frames)}}<th class="c">Until {{date}}</th>{{ENDFOR()}}
+                </tr>
+            </thead>
+            <tbody>
+            {{FOR(events)}}
+                <tr>
+                    <td>{{name}}</td>
+                    <td class="c{{IF(activePricing=A)}} active-pricing{{ENDIF()}}">${{priceA}}</td>
+                    <td class="c{{IF(activePricing=B)}} active-pricing{{ENDIF()}}">${{priceB}}</td>
+                    <td class="c{{IF(activePricing=C)}} active-pricing{{ENDIF()}}">${{priceC}}</td>
+                </tr>
+            {{ENDFOR()}}
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,76 @@
+<legend><h1>Socios vigentes</h1></legend>
+
+<table class="table table-condensed table-hover">
+    <thead>
+        <tr>
+            <th class="text-center">Foto</th>
+            <th>Nombre</th>
+            <th>Socio hasta</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{FOR(activos)}}
+        <tr>
+            <td class="col-xs-1 col-sm-1 vert-align">
+                <center><div id="thumb_{{wca}}" class="wca-thumbnail"></div></center>
+            </td>
+            {{IF(wca)}}
+            <td class="col-xs-8 col-sm-5 vert-align">
+                <a href="https://www.worldcubeassociation.org/results/p.php?i={{wca}}" target=_blank>
+                    {{nombre}}
+                </a>
+            </td>
+            {{ELSE()}}
+            <td class="col-xs-8 col-sm-5 vert-align">
+                {{nombre}}
+            </td>
+            {{ENDIF()}}
+            <td class="col-xs-3 col-sm-6 vert-align">{{fecha}}</td>
+        </tr>
+        {{ENDFOR()}}
+    </tbody>
+</table>
+
+<legend><h2>Antiguos socios</h2></legend>
+
+<table class="table table-condensed table-hover">
+    <thead>
+    <tr>
+        <th width="50%">Nombre</th>
+        <th width="50%">Socio hasta</th>
+    </tr>
+    </thead>
+    <tbody>
+        {{FOR(antiguos)}}
+        <tr>
+            <td class="col-xs-9 col-sm-6">
+                {{nombre}}
+            </td>
+            <td class="col-xs-3 col-sm-6">{{fecha}}</td>
+        </tr>
+        {{ENDFOR()}}
+    </tbody>
+</table>
+
+<script>
+    $(document).ready(function() {
+        $('table .wca-thumbnail').each(function() {
+            if (this.id.length > 6) {
+                var wcaId = this.id.substring(6);
+                $.ajax('https://www.worldcubeassociation.org/api/v0/users/'+wcaId)
+                        .done(function(wcaObj) {
+                            if (wcaObj && wcaObj.user && wcaObj.user.avatar && !wcaObj.user.avatar.is_default) {
+                                //$('#thumb_'+wcaObj.user.wca_id).attr('src',wcaObj.user.avatar.thumb_url)
+                                $('#thumb_'+wcaObj.user.wca_id).css('background-image', 'url("' + wcaObj.user.avatar.thumb_url + '")')
+                                        .popover({
+                                            html: true,
+                                            trigger: 'hover',
+                                            title: wcaObj.user.name,
+                                            content: '<img class="img-responsive" src="'+wcaObj.user.avatar.url+'">'
+                                        });
+                            }
+                        });
+            }
+        });
+    });
+</script>

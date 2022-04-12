@@ -1,0 +1,77 @@
+<div class="row">
+
+    <div class="col-xs-12">
+        <h2 class="page-title">Competitors</h2>
+
+        {{IF(competitors)}}
+        <div class="table-responsive">
+
+            <table class="table table-condensed">
+
+                <thead>
+                <tr>
+
+                    <th><a href="{{link}}{{version-language}}/competitors/byname">Name</a></th>
+                    <th><a href="{{link}}{{version-language}}/competitors/bycountry">Country</a></th>
+                    {{FOR(events)}}<th><a href="{{link}}{{version-language}}/psychsheet/{{id}}"><span class="cubing-icon icon-{{id}}" title="Click for {{name}} Psych Sheet"></span></a></th>{{ENDFOR()}}
+
+                </tr>
+                </thead>
+
+                <tbody>
+                {{FOR(competitors)}}
+                <tr>
+                    {{IF(options)}}
+                    <td class="top-cuber">
+                        {{IF(yt_video_id)}}
+                        <iframe width="208" height="117" src="https://www.youtube.com/embed/{{yt_video_id}}?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                        <span>{{IF(wca_id)}}<a href="https://www.worldcubeassociation.org/persons/{{wca_id}}" target="_blank">{{name}}</a>{{ELSE()}}{{name}}{{ENDIF()}}</span><br>
+                        Highly ranked for {{options}}
+                        {{ELSE()}}
+                        <span>{{IF(wca_id)}}<a href="https://www.worldcubeassociation.org/persons/{{wca_id}}" target="_blank">{{name}}</a>{{ELSE()}}{{name}}{{ENDIF()}}</span>
+                        &nbsp;<span class="glyphicon glyphicon-triangle-bottom" onclick="toggleSlider({{id}});" id="toggle{{id}}"></span>
+                        <div class="slider" id="slider-{{id}}">
+                            {{IF(avatar_url)}}<img src="{{avatar_url}}">{{ENDIF()}}
+                            Highly ranked for {{options}}
+                        </div>
+                        {{ENDIF()}}
+                    </td>
+                    {{ELSE()}}
+                    <td>{{IF(wca_id)}}<a href="https://www.worldcubeassociation.org/persons/{{wca_id}}" target="_blank">{{name}}</a>{{ELSE()}}{{name}}{{ENDIF()}}</td>
+                    {{ENDIF()}}
+                    <td>{{country}}</td>
+                    {{FOR(events)}}
+                    <td>{{IF(signed_up)}}<span class="cubing-icon icon-{{id}}" title="{{name}}"></span>{{ENDIF()}}</td>
+                    {{ENDFOR()}}
+                </tr>
+                {{ENDFOR()}}
+                <tr style="font-size: 12px;">
+                {{FOR(totals)}}<td>{{count}}</td>{{ENDFOR()}}
+                </tr>
+                </tbody>
+
+            </table>
+
+        </div>
+        {{ELSE()}}
+        <p>
+            Registration has not yet opened, so there is no available competitor list.
+        </p>
+        {{ENDIF()}}
+
+    </div>
+
+</div>
+
+<script>
+function toggleSlider(id)
+{
+    $('#slider-'+id).slideToggle();
+    var toggle = $('#toggle'+id);
+    if(toggle.hasClass('glyphicon-triangle-bottom')) {
+        toggle.removeClass('glyphicon-triangle-bottom').addClass('glyphicon-triangle-top');
+    } else {
+        toggle.removeClass('glyphicon-triangle-top').addClass('glyphicon-triangle-bottom');
+    }
+}
+</script>

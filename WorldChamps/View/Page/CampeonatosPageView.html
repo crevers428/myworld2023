@@ -1,0 +1,124 @@
+{{IF(next-competitions)}}
+<h1>Próximos Campeonatos</h1>
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
+        <div class="embed-responsive embed-responsive-4by3">
+            <div class="embed-responsive-item" id="mapContainer"></div>
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7">
+        <div id="carousel" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner" role="listbox">
+                {{FOR(next-competitions)}}
+                <div class="item{{IF(for_index=0)}} active{{ENDIF()}}" style="width:100%;">
+                    <div class="col-xs-12 col-sm-12 hidden-md hidden-lg">&nbsp;</div>
+                    <div class="col-xs-12">
+                        <h2><a href="{{link}}c/{{id}}">{{nombre}}</a></h2>
+                        <h3><span class="glyphicon glyphicon-calendar"></span> {{fechas}}</h3>
+                        <h3><span class="glyphicon glyphicon-map-marker"></span> {{lugar}}</h3>
+                    </div>
+                </div>
+                {{ENDFOR()}}
+            </div>
+        </div>
+        <div>
+            <h4>Síguenos</h4>
+            <a href="https://www.facebook.com/aecrubik/" target="_blank"><img src="{{file}}img/facebook-logo.png"></a>
+            &nbsp;
+            <a href="https://twitter.com/AECRubik/" target="_blank"><img src="{{file}}img/twitter-logo.png"></a>
+        </div>
+    </div>
+</div>
+<p></p>
+
+<table class='table'>
+    {{FOR(next-competitions)}}
+    <tr>
+        <td><a href='c/{{id}}'>{{nombre}}</a></td>
+        <td>{{fechas}}</td>
+        <td>{{lugar}}</td>
+    </tr>
+    {{ENDFOR()}}
+</table>
+{{ENDIF()}}
+
+{{IF(past-competitions)}}
+<h1>Campeonatos celebrados</h1>
+<table class='table'>
+    {{FOR(past-competitions)}}
+    <tr>
+        <td><a href='c/{{id}}'>{{nombre}}</a></td>
+        <td>{{fechas}}</td>
+        <td>{{lugar}}</td>
+    </tr>
+    {{ENDFOR()}}
+</table>
+{{ENDIF()}}
+
+{{IF(next-competitions)}}
+<script>
+
+    var locations = [{{FOR(next-competitions)}}{{IF(for_index>0)}},{{ENDIF()}}
+        {id:"{{id}}",name:"{{nombre}}",place:"{{lugar}}",dates:"{{fechas}}",lat:{{lat}},lng:{{lng}}}{{ENDFOR()}}
+    ];
+    var map;
+    var markers = [];
+    var infoWindow;
+
+    function getMarkerContent(i)
+    {
+        var st = '<b style="font-size:20px;"><a href="{{link}}c/'+locations[i].id+'">'+locations[i].name+'</a></b><br>'+locations[i].place;
+        return st;
+    }
+
+    function resizeMap()
+    {
+        var mapWidth = $('#mapContainer').width();
+        $('#mapContainer').height(3 * mapWidth / 4);
+    }
+
+    function showInfoWindow(marker)
+    {
+        infoWindow.setContent(marker.text);
+        infoWindow.open(map,marker);
+    }
+
+    $(document).ready(function () {
+
+        var mapCanvas = document.getElementById('mapContainer');
+        var center = new google.maps.LatLng(locations[0].lat,locations[0].lng);
+        var mapOptions = {
+            center: center,
+            zoom: 12,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        map = new google.maps.Map(mapCanvas, mapOptions);
+
+        infoWindow = new google.maps.InfoWindow();
+        for (var i=0; i < locations.length; i++) {
+            var marker = new google.maps.Marker({
+                position: new google.maps.LatLng(locations[i].lat, locations[i].lng),
+                map: map
+            });
+            marker.text = getMarkerContent(i);
+            marker.carouselIndex = i;
+            google.maps.event.addListener(marker, 'click', function() {
+                $('#carousel').carousel(this.carouselIndex);
+            });
+            markers.push(marker);
+        }
+
+        $(mapCanvas)
+                .mouseenter(
+                function() {$('#carousel').carousel('pause')})
+                .mouseleave(
+                function() {$('#carousel').carousel('cycle')});
+        $('#carousel').on('slide.bs.carousel', function (obj) {
+            showInfoWindow(markers[$(obj.relatedTarget).index()]);
+        });
+        resizeMap();
+        showInfoWindow(markers[0]);
+    });
+    $(window).resize(resizeMap);
+</script>
+{{ENDIF()}}

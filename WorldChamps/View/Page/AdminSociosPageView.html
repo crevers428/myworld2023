@@ -1,0 +1,38 @@
+        <div class="row">
+            <div class="col-md-12">
+
+                <h2 class="text-info" style="margin-bottom: 20px;">Socios</h2>
+                <button class="btn btn-success" onclick="document.location='{{link}}admin/socios/nuevo'"><span class="glyphicon glyphicon-plus"></span> Nuevo Socio...</button><br>
+                <br>
+
+                {{IF(table)}}
+
+                <div class="table-responsive">
+                    <table class="table table-condensed">
+                    {{FOR(table)}}
+                        <tr{{IF(caducidad<sys_date)}} class="text-danger"{{ENDIF()}}>
+                            <td>{{nombre}}</td>
+                            <td>{{caducidad}}</td>
+                            <td>&nbsp;
+                                <button class="btn btn-info btn-xs" onclick="document.location='{{link}}admin/socios/editar/{{id}}'">
+                                    <span class="glyphicon glyphicon-pencil"></span> Editar
+                                </button>&nbsp;
+                            </td>
+                        </tr>
+                    {{ENDFOR()}}
+                    </table>
+                </div>
+
+                {{ELSE()}}
+
+                <p>
+                    No hay socios
+                </p>
+
+                {{ENDIF()}}
+
+                <br>
+                <button class="btn btn-sm btn-default" onclick="document.location='{{link}}panel'"><span class="glyphicon glyphicon-home"></span> Mi Panel</button><br>
+
+            </div>
+        </div>

@@ -1,0 +1,180 @@
+        <div class="row">
+            <div class="col-md-12">
+
+                <h2 class="text-info" style="margin-bottom: 20px;">{{formTitle}}</h2>
+
+                {{md_instructions|raw}}
+
+                {{form|raw}}
+
+                <br>
+                <button class="btn btn-sm btn-default" onclick="document.location='{{link}}panel'"><span class="glyphicon glyphicon-home"></span> Mi Panel</button>
+                <button class="btn btn-sm btn-default" onclick="document.location='{{link}}admin/competiciones'"><span class="glyphicon glyphicon-chevron-left"></span> Competiciones</button>
+
+            </div>
+        </div>
+
+<script>
+
+    var events = $.parseJSON('{{events_json|raw}}');
+    var persons = $.parseJSON('{{persons_json|raw}}');
+    var selectedOrganizers = [];
+    var selectedDelegates = [];
+
+    function getEventIndex(id)
+    {
+        var index = 0;
+        while (index < events.length && events[index].id != id) index++;
+        return index;
+    }
+
+    function getPersonIndex(id)
+    {
+        var index = 0;
+        while (index < persons.length && persons[index].id != id) index++;
+        return index;
+    }
+    {{IF(edit_mode<2)}}
+    function removeEvent(id)
+    {
+        events[getEventIndex(id)].selected = false;
+        showSelectedEvents();
+    }
+
+    function removeOrganizer(index)
+    {
+        selectedOrganizers.splice(index,1);
+        showSelectedOrganizers();
+    }
+
+    function removeDelegate(index)
+    {
+        selectedDelegates.splice(index,1);
+        showSelectedDelegates();
+    }
+
+    function addAllEvents()
+    {
+        for (var index=0; index < events.length; index++) {
+            events[index].selected = true;
+        }
+        showSelectedEvents();
+    }
+
+    function addOrganizer()
+    {
+        var name, email;
+        name = $('#organizer_name').val().trim();
+        email = $('#organizer_email').val().trim();
+        if (!name || !email) {
+            alert('Tienes que rellenar nombre y correo-e');
+        } else {
+            selectedOrganizers.push([name,email]);
+            showSelectedOrganizers();
+        }
+    }
+
+    function addDelegate()
+    {
+        var name, email;
+        name = $('#delegate_name').val().trim();
+        email = $('#delegate_email').val().trim();
+        if (!name || !email) {
+            alert('Tienes que rellenar nombre y correo-e');
+        } else {
+            selectedDelegates.push([name,email]);
+            showSelectedDelegates();
+        }
+    }
+    {{ENDIF()}}
+    function showSelectedEvents()
+    {
+        var eventsHTML = '';
+        var eventsArray = [];
+        var index = 0;
+        while (index < events.length) {
+            if (events[index].selected) {
+                eventsArray.push(events[index].id);
+                eventsHTML += '<span class="label label-default">'+
+                {{IF(edit_mode<2)}}'<a style="color:#fff;cursor:pointer;" title="Eliminar" onclick="removeEvent(\''+events[index].id+'\');">&times;</a> '+{{ENDIF()}}
+                '<img src="{{file}}img/'+events[index].id+'.gif"> '+events[index].name+'</span> ';
+            }
+            index++;
+        }
+        $('#form_pruebas').val(JSON.stringify(eventsArray));
+        $('#events_selected').html(eventsHTML);
+        $('#events_selector').val('');
+    }
+
+    function showSelectedOrganizers()
+    {
+        var organizersHTML = '';
+        var index = 0;
+        while (index < selectedOrganizers.length) {
+            organizersHTML += '<span class="label label-primary">'+
+            {{IF(edit_mode<2)}}'<a style="color:#fff;cursor:pointer;" title="Eliminar" onclick="removeOrganizer('+index+');">&times;</a> '+{{ENDIF()}}
+    ' '+selectedOrganizers[index][0]+' ('+selectedOrganizers[index][1]+')</span> ';
+    index++;
+    }
+    $('#form_organizadores').val(JSON.stringify(selectedOrganizers));
+    $('#organizers_selected').html(organizersHTML);
+    $('#organizer_name').val('');
+    $('#organizer_email').val('');
+    }
+
+    function showSelectedDelegates()
+    {
+        var delegatesHTML = '';
+        var index = 0;
+        while (index < selectedDelegates.length) {
+            delegatesHTML += '<span class="label label-primary">'+
+            {{IF(edit_mode<2)}}'<a style="color:#fff;cursor:pointer;" title="Eliminar" onclick="removeDelegate('+index+');">&times;</a> '+{{ENDIF()}}
+    ' '+selectedDelegates[index][0]+' ('+selectedDelegates[index][1]+')</span> ';
+    index++;
+    }
+    $('#form_delegados').val(JSON.stringify(selectedDelegates));
+    $('#delegates_selected').html(delegatesHTML);
+    $('#delegate_name').val('');
+    $('#delegate_email').val('');
+    }
+
+    $(document).ready(function () {
+
+        var selectedEvents = $.parseJSON($('#form_pruebas').val());
+        for(var i=0; i<selectedEvents.length; i++) {
+            events[getEventIndex(selectedEvents[i])].selected = true;
+        }
+        {{IF(edit_mode<2)}}
+        $('#events_selector').change(function() {
+            events[getEventIndex($(this).val())].selected = true;
+            showSelectedEvents();
+        });
+        $('#organizers_selector').change(function() {
+            var index = getPersonIndex($(this).val());
+            $('#organizer_name').val(persons[index].nombre);
+            $('#organizer_email').val(persons[index].email);
+        });
+        $('#delegates_selector').change(function() {
+            var index = getPersonIndex($(this).val());
+            $('#delegate_name').val(persons[index].nombre);
+            $('#delegate_email').val(persons[index].email);
+        });
+        $('#form_fecha_comienzo').change(function() {
+            if (!$('#form_fecha_final').val().trim()) {
+                $('#form_fecha_final').val($('#form_fecha_comienzo').val());
+            }
+        });
+        $('#form_nombre').change(function() {
+            if (!$('#form_id').val().trim()) {
+                $('#form_id').val($('#form_nombre').val().replace(/[^a-zA-Z0-9]/g,''));
+            }
+        });
+        {{ENDIF()}}
+        showSelectedEvents();
+        selectedOrganizers = $.parseJSON($('#form_organizadores').val());
+        showSelectedOrganizers();
+        selectedDelegates = $.parseJSON($('#form_delegados').val());
+        showSelectedDelegates();
+    });
+
+</script>

@@ -1,0 +1,5 @@
+*_database.sql
+*.zip
+*dev*_tables.sql
+WCA*.sql
+*.sh
